@@ -11,16 +11,44 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping(path="/add")
-    public @ResponseBody String addUser(@RequestParam String name, @RequestParam String email) {
-        User user = new User(name,email);
+    @PostMapping
+    public @ResponseBody String addUser(@RequestBody User user) {
         userRepository.save(user);
-        return ("saved"+user.toString());
+        return ("saved : "+user.toString());
     }
 
     @GetMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public @ResponseBody User getUser(@PathVariable Integer id){
+        System.out.println("get user "+id);
+        return userRepository.findById(id).orElseThrow(()->
+                new UserNotFoundException(id)
+        );
+    }
+
+    @PutMapping("/{id}")
+    public @ResponseBody String updateUser(@RequestBody User newUser,@PathVariable Integer id){
+        User updatedUser =  userRepository.findById(id)
+                .map( user -> {
+                    user.setEmail(newUser.getEmail());
+                    user.setName(newUser.getName());
+                    return userRepository.save(user);
+                }).orElseGet(() -> {
+                        newUser.setId(id);
+                        return userRepository.save(newUser);
+                    }
+                );
+        return ("updated User : "+updatedUser.toString());
+    }
+
+    @DeleteMapping("/{id}")
+    public @ResponseBody String deleteUser(@PathVariable Integer id){
+        userRepository.deleteById(id);
+        return "user deleted";
     }
 
 }
