@@ -29,6 +29,17 @@ public class User {
     public User(){
     }
 
+    public User(Integer id, String firstName, String lastName, String mobile, String email, String userName, String address1, String address2) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.email = email;
+        this.userName = userName;
+        this.address1 = address1;
+        this.address2 = address2;
+    }
+
     public Integer getId() {
         return id;
     }
