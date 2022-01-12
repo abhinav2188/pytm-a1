@@ -1,8 +1,11 @@
 package com.paytm.assignment1;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping(path="/user")
@@ -12,43 +15,61 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping
-    public @ResponseBody String addUser(@RequestBody User user) {
-        userRepository.save(user);
-        return ("saved : "+user.toString());
+    public ResponseEntity<?> addUser(@RequestBody User newUser) {
+        System.out.println("post user");
+        try{
+            User user = userRepository.save(newUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
+        }
+
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers(){
-        return userRepository.findAll();
+    public ResponseEntity<?> getAllUsers(){
+        return ResponseEntity.ok().body(userRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody User getUser(@PathVariable Integer id){
+    public ResponseEntity<?> getUser(@PathVariable Integer id){
         System.out.println("get user "+id);
-        return userRepository.findById(id).orElseThrow(()->
+        User user = userRepository.findById(id).orElseThrow(()->
                 new UserNotFoundException(id)
         );
+        return ResponseEntity.ok().body(user);
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody String updateUser(@RequestBody User newUser,@PathVariable Integer id){
-        User updatedUser =  userRepository.findById(id)
-                .map( user -> {
-                    user.setEmail(newUser.getEmail());
-                    user.setName(newUser.getName());
-                    return userRepository.save(user);
-                }).orElseGet(() -> {
-                        newUser.setId(id);
-                        return userRepository.save(newUser);
-                    }
-                );
-        return ("updated User : "+updatedUser.toString());
+    public ResponseEntity<?> updateUser(@RequestBody User newUser,@PathVariable Integer id){
+        User updatedUser = userRepository.findById(id).map(user -> {
+            user.setUserName(newUser.getUserName());
+            user.setFirstName(newUser.getFirstName());
+            user.setLastName(newUser.getLastName());
+            user.setMobile(newUser.getMobile());
+            user.setAddress1(newUser.getAddress1());
+            user.setAddress2(newUser.getAddress2());
+            user.setEmail(newUser.getEmail());
+            return user;
+        }).orElseThrow(() ->
+                new UserNotFoundException(id)
+        );
+        try{
+            User user = userRepository.save(updatedUser);
+            return ResponseEntity.status(HttpStatus.CREATED).body(user);
+        }catch(Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public @ResponseBody String deleteUser(@PathVariable Integer id){
-        userRepository.deleteById(id);
-        return "user deleted";
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id){
+        if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
+            return ResponseEntity.ok("User deleted");
+        }else{
+            throw new UserNotFoundException(id);
+        }
     }
 
 }
