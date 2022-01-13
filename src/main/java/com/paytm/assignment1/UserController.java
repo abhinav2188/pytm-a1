@@ -40,6 +40,7 @@ public class UserController {
     public ResponseEntity<?> getUser(@PathVariable Integer id){
         System.out.println("get user "+id);
         Optional<User> optionalUser = userRepository.findById(id);
+//        System.out.println(optionalUser);
         if(optionalUser.isPresent()){
             return ResponseEntity.ok().body(optionalUser.get());
         }

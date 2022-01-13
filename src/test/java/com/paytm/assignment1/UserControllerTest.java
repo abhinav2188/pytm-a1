@@ -57,13 +57,14 @@ public class UserControllerTest {
 
     @Test
     public void getUser_userNotPresent() throws Exception{
-        Mockito.when(userRepository.findById(20)).thenReturn(Optional.of(null));
+        Mockito.when(userRepository.findById(20)).thenReturn(Optional.empty());
         mockMvc.perform( MockMvcRequestBuilders.get("/user/20")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound())
-                .andExpect(content().string(containsString("User not found")));
+                .andExpect(content().string(containsString("User not Found")));
     }
+
 
 
 }
