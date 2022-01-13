@@ -1,0 +1,44 @@
+
+POST Request cases :
+api : /user
+
+1. successful post
+2. duplicate fields
+    1. phone number
+    2. username
+    4. email
+3. null fields
+    1. first Name
+    2. email
+    3. phone
+    4. address1
+    5. username
+
+GET Request cases
+api : /user/{id}
+
+1. successful get
+2. user not found / invalid id
+
+api : /user/all
+1. successful get
+    1. empty data
+    2. filled data
+
+PUT Request cases
+api : /user/{id}
+
+1. successful update
+2. user not found / invalid id
+3. user found but constraints error(duplicate entry/null entry) after updation
+
+DELETE Request cases
+api : /user/{id}
+
+1. successful delete
+2. user not found / invalid id
+
+
+
+
+
