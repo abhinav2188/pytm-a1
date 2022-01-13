@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 
 @RestController
 @RequestMapping(path="/user")
@@ -37,10 +39,14 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable Integer id){
         System.out.println("get user "+id);
-        User user = userRepository.findById(id).orElseThrow(()->
-                new UserNotFoundException(id)
-        );
-        return ResponseEntity.ok().body(user);
+        Optional<User> optionalUser = userRepository.findById(id);
+        if(optionalUser.isPresent()){
+            return ResponseEntity.ok().body(optionalUser.get());
+        }
+        else{
+            System.out.println("not found user");
+            throw new UserNotFoundException(id);
+        }
     }
 
     @PutMapping("/{id}")
