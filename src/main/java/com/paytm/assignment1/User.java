@@ -1,7 +1,10 @@
 package com.paytm.assignment1;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 
+@Builder
 @Entity
 public class User {
     @Id

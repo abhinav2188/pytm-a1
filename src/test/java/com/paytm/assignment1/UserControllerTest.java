@@ -1,12 +1,18 @@
 package com.paytm.assignment1;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.webservices.server.WebServiceServerTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
@@ -23,6 +29,9 @@ public class UserControllerTest {
 
     @Autowired
     MockMvc mockMvc;
+
+    @Autowired
+    ObjectMapper mapper;
 
     @MockBean
     UserRepository userRepository;
@@ -65,6 +74,34 @@ public class UserControllerTest {
                 .andExpect(content().string(containsString("User not Found")));
     }
 
+    @Test
+    public void postUser_success1() throws Exception{
+        // all fields are set
+        User user = User.builder()
+                .firstName("Macrus")
+                .lastName("Lupin")
+                .email("marcus@test.com")
+                .userName("marpin")
+                .mobile("8384892933")
+                .address1("street 23, DC")
+                .address2("uptown 122, 23 DJK").build();
+
+        System.out.println(this.mapper.writeValueAsString(user));
+
+        Mockito.when(userRepository.save(user)).thenReturn(user);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.mapper.writeValueAsString(user));
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$",notNullValue()))
+                .andExpect(jsonPath("$.email",is(user.getEmail())));
+
+    }
 
 
 }

@@ -15,20 +15,19 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    public UserController(UserRepository userRepository){
+    @Autowired
+    private UserService userService;
+
+    public UserController(UserRepository userRepository, UserService userService){
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @PostMapping
     public ResponseEntity<?> addUser(@RequestBody User newUser) {
         System.out.println("post user");
-        try{
-            User user = userRepository.save(newUser);
-            return ResponseEntity.status(HttpStatus.CREATED).body(user);
-        }catch(Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getLocalizedMessage());
-        }
-
+        System.out.println(newUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(newUser));
     }
 
     @GetMapping(path="/all")
