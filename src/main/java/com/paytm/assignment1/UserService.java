@@ -26,4 +26,33 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
+    public User getUser(int id){
+        return userRepository.findById(id).orElseThrow( () -> new UserNotFoundException(id));
+    }
+
+    public Iterable<User> getAllUsers(){
+        return userRepository.findAll();
+    }
+
+    public User updateUser(int id, User newUser){
+        return userRepository.findById(id).map( user -> {
+            user.setUserName(newUser.getUserName());
+            user.setFirstName(newUser.getFirstName());
+            user.setLastName(newUser.getLastName());
+            user.setMobile(newUser.getMobile());
+            user.setAddress1(newUser.getAddress1());
+            user.setAddress2(newUser.getAddress2());
+            user.setEmail(newUser.getEmail());
+            validateUser(user);
+            return userRepository.save(user);
+        }).orElseThrow( () -> new UserNotFoundException(id));
+    }
+
+    public boolean deleteUser(int id){
+        if(!userRepository.existsById(id)) throw new UserNotFoundException(id);
+        userRepository.deleteById(id);
+        return true;
+    }
+
+
 }
