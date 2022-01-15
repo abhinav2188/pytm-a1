@@ -1,5 +1,7 @@
-package com.paytm.assignment1;
+package com.paytm.assignment1.advices;
 
+import com.paytm.assignment1.exceptions.UserNotFoundException;
+import com.paytm.assignment1.exceptions.UserValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

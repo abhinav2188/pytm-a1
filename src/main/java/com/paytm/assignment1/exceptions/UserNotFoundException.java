@@ -1,4 +1,4 @@
-package com.paytm.assignment1;
+package com.paytm.assignment1.exceptions;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(Integer id){

@@ -1,5 +1,6 @@
-package com.paytm.assignment1;
+package com.paytm.assignment1.repositories;
 
+import com.paytm.assignment1.modals.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

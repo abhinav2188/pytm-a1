@@ -1,5 +1,9 @@
-package com.paytm.assignment1;
+package com.paytm.assignment1.services;
 
+import com.paytm.assignment1.repositories.UserRepository;
+import com.paytm.assignment1.exceptions.UserNotFoundException;
+import com.paytm.assignment1.exceptions.UserValidationException;
+import com.paytm.assignment1.modals.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

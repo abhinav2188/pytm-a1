@@ -1,4 +1,4 @@
-package com.paytm.assignment1;
+package com.paytm.assignment1.modals;
 
 import lombok.Builder;
 

@@ -1,14 +1,13 @@
 package com.paytm.assignment1;
 
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
+import com.paytm.assignment1.controllers.UserController;
+import com.paytm.assignment1.modals.User;
+import com.paytm.assignment1.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.autoconfigure.webservices.server.WebServiceServerTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
