@@ -2,6 +2,7 @@ package com.paytm.assignment1;
 
 import com.paytm.assignment1.controllers.UserController;
 import com.paytm.assignment1.repositories.UserRepository;
+import com.paytm.assignment1.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,12 +16,12 @@ public class SmokeTest {
     private UserController userController;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Test
     void contextLoads(){
         assertThat(userController).isNotNull();
-        assertThat(userRepository).isNotNull();
+        assertThat(userService).isNotNull();
     }
 
 }
