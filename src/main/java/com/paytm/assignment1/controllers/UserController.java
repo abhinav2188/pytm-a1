@@ -1,11 +1,17 @@
 package com.paytm.assignment1.controllers;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
+import com.paytm.assignment1.dto.BaseResponseDto;
+import com.paytm.assignment1.dto.UserResponseDto;
 import com.paytm.assignment1.modals.User;
 import com.paytm.assignment1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -20,31 +26,59 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody User newUser) {
-        System.out.println("post user");
-        System.out.println(newUser);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.addUser(newUser));
+    @ResponseBody
+    public BaseResponseDto addUser(@RequestBody User newUser) {
+        User addedUser = userService.addUser(newUser);
+        return BaseResponseDto.builder()
+                .status(HttpStatus.CREATED)
+                .msg("new user created")
+                .data(new UserResponseDto(addedUser))
+                .build();
     }
 
     @GetMapping(path="/all")
-    public ResponseEntity<?> getAllUsers(){
-        return ResponseEntity.ok().body(userService.getAllUsers());
+    @ResponseBody
+    public BaseResponseDto getAllUsers(){
+        Iterable<User> users = userService.getAllUsers();
+        List<UserResponseDto> userDtos = new ArrayList<>();
+        users.forEach(user -> {
+            userDtos.add(new UserResponseDto(user));
+        });
+        return BaseResponseDto.builder()
+                .status(HttpStatus.OK)
+                .data(userDtos)
+                .build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUser(@PathVariable Integer id){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUser(id));
+    @ResponseBody
+    public BaseResponseDto getUser(@PathVariable Integer id){
+        User user = userService.getUser(id);
+        return BaseResponseDto.builder()
+                .status(HttpStatus.OK)
+                .data(new UserResponseDto(user))
+                .build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@RequestBody User newUser,@PathVariable Integer id) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.updateUser(id,newUser));
+    @ResponseBody
+    public BaseResponseDto updateUser(@RequestBody User newUser,@PathVariable Integer id) {
+        User updatedUser = userService.updateUser(id,newUser);
+        return BaseResponseDto.builder()
+                .status(HttpStatus.OK)
+                .data(new UserResponseDto(updatedUser))
+                .msg("user details updated")
+                .build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Integer id){
+    @ResponseBody
+    public BaseResponseDto deleteUser(@PathVariable Integer id){
         userService.deleteUser(id);
-        return ResponseEntity.status(HttpStatus.OK).body("user deleted successfully");
+        return BaseResponseDto.builder()
+                .status(HttpStatus.OK)
+                .msg("user deleted successfully")
+                .build();
     }
 
 }

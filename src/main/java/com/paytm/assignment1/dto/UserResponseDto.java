@@ -4,7 +4,7 @@ import com.paytm.assignment1.modals.User;
 import lombok.Data;
 
 @Data
-public class UserResponseDto extends BaseResponseDto{
+public class UserResponseDto{
 
     private Integer id;
     private String firstName;
@@ -16,7 +16,6 @@ public class UserResponseDto extends BaseResponseDto{
     private String address2;
 
     public UserResponseDto(User user){
-        super();
         this.id = user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();

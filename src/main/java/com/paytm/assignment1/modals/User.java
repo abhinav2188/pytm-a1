@@ -1,6 +1,7 @@
 package com.paytm.assignment1.modals;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -38,8 +39,10 @@ public class User extends Timestamps {
     @Column(nullable = false)
     private String password;
 
+    @ColumnDefault("1")
     private boolean isActive;
 
+    @ColumnDefault("'USER'")
     private String roles;
 
 }
