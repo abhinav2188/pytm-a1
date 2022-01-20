@@ -47,6 +47,9 @@ public class UserService {
             user.setAddress1(newUser.getAddress1());
             user.setAddress2(newUser.getAddress2());
             user.setEmail(newUser.getEmail());
+            user.setPassword(newUser.getPassword());
+            user.setRoles("USER");
+            user.setActive(true);
             validateUser(user);
             return userRepository.save(user);
         }).orElseThrow( () -> new UserNotFoundException(id));

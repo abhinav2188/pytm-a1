@@ -10,10 +10,10 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
-public class User {
+public class User extends Timestamps {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false)
@@ -38,7 +38,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    private Boolean active;
+    private boolean isActive;
 
     private String roles;
 
