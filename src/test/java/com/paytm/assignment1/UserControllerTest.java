@@ -34,7 +34,7 @@ public class UserControllerTest {
 
     @MockBean
     UserService userService;
-
+/*
     User USER_1 = new User(1,"Abhinav","Rastogi","9808237443","abhi@test.com","abhi1","2,saudagran,BLY","Jubilee Hall, DU","1234",true,"USER");
     User USER_2 = new User(2,"Vasu","Sehgal","8736838343","vasu@test.com","geekmonk","435,Govindpuri,DLI","","1234",true,"USER");
     User USER_3 = new User(3,"Sristi","Goyal","9937477554","goyal@test.com","goyal2","sec 12, Noida","Shadra,DLI","1234",true,"USER");
@@ -102,5 +102,5 @@ public class UserControllerTest {
 
     }
 
-
+*/
 }

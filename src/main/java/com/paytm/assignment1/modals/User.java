@@ -39,10 +39,15 @@ public class User extends Timestamps {
     @Column(nullable = false)
     private String password;
 
-    @ColumnDefault("1")
+    @Column(nullable = false)
     private boolean isActive;
 
-    @ColumnDefault("'USER'")
+    @Column(nullable = false)
     private String roles;
+
+    @OneToOne
+    @JoinColumn(name="wallet_id", referencedColumnName = "id")
+    private UserWallet wallet;
+
 
 }
