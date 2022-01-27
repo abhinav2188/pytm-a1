@@ -1,5 +1,6 @@
 package com.paytm.assignment1.modals;
 
+import com.paytm.assignment1.enums.TransactionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,7 @@ public class Transaction extends Timestamps{
     private double amount;
 
     // pending,completed,failed
-    private String status;
+    private TransactionStatus status;
 
     private double payerClosingBalance;
 
