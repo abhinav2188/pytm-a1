@@ -44,8 +44,9 @@ public class WalletService {
     }
 
     public UserWallet getWallet(String mobile){
-        return walletRepository.findByUserMobile(mobile)
+        UserWallet wallet = walletRepository.findByUserMobile(mobile)
                 .orElseThrow(() -> new WalletNotFoundException(mobile));
+        return wallet;
     }
 
 }

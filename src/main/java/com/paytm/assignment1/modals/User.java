@@ -1,6 +1,7 @@
 package com.paytm.assignment1.modals;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -48,7 +49,7 @@ public class User extends Timestamps {
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="wallet_id", referencedColumnName = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UserWallet wallet;
-
 
 }

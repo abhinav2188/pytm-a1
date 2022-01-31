@@ -32,7 +32,7 @@ public class UserController {
         return BaseResponseDto.builder()
                 .status(HttpStatus.CREATED)
                 .msg("new user created")
-                .data(new UserResponseDto(addedUser))
+                .data(addedUser)
                 .build();
     }
 
@@ -40,13 +40,13 @@ public class UserController {
     @ResponseBody
     public BaseResponseDto getAllUsers(){
         Iterable<User> users = userService.getAllUsers();
-        List<UserResponseDto> userDtos = new ArrayList<>();
-        users.forEach(user -> {
-            userDtos.add(new UserResponseDto(user));
-        });
+//        List<UserResponseDto> userDtos = new ArrayList<>();
+//        users.forEach(user -> {
+//            userDtos.add(new UserResponseDto(user));
+//        });
         return BaseResponseDto.builder()
                 .status(HttpStatus.OK)
-                .data(userDtos)
+                .data(users)
                 .build();
     }
 

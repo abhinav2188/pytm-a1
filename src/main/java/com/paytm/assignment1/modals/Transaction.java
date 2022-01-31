@@ -1,5 +1,6 @@
 package com.paytm.assignment1.modals;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.paytm.assignment1.enums.TransactionStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,10 +20,12 @@ public class Transaction extends Timestamps{
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "payer_wallet_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UserWallet payer;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="payee_wallet_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private UserWallet payee;
 
     private double amount;

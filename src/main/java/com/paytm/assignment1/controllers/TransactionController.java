@@ -1,6 +1,5 @@
 package com.paytm.assignment1.controllers;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import com.paytm.assignment1.dto.AddTransactionRequestDto;
 import com.paytm.assignment1.dto.BaseResponseDto;
 import com.paytm.assignment1.modals.Transaction;
@@ -31,6 +30,14 @@ public class TransactionController {
                 .status(HttpStatus.CREATED)
                 .data(transaction)
                 .msg("created transaction")
+                .build();
+    }
+
+    @GetMapping("/{mobile}")
+    public BaseResponseDto getTransaction(@PathVariable String mobile){
+        return BaseResponseDto.builder()
+                .data(transactionService.getTransactions(mobile))
+                .status(HttpStatus.OK)
                 .build();
     }
 }

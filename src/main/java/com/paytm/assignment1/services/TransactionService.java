@@ -1,18 +1,16 @@
 package com.paytm.assignment1.services;
 
 import com.paytm.assignment1.enums.TransactionStatus;
-import com.paytm.assignment1.exceptions.InsufficientBalanceException;
-import com.paytm.assignment1.exceptions.UserNotFoundException;
 import com.paytm.assignment1.exceptions.WalletNotFoundException;
 import com.paytm.assignment1.modals.Transaction;
-import com.paytm.assignment1.modals.User;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.repositories.TransactionRepository;
 import com.paytm.assignment1.repositories.UserRepository;
 import com.paytm.assignment1.repositories.WalletRepository;
-import org.hibernate.procedure.UnknownSqlResultSetMappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -62,4 +60,12 @@ public class TransactionService {
 
         return transactionRepository.save(transaction);
     }
+
+    public List<Transaction> getTransactions(String mobile){
+        System.out.println("TransactionService: getTransactions()");
+        UserWallet wallet = walletRepository.findByUserMobile(mobile)
+                .orElseThrow( () -> new WalletNotFoundException(mobile));
+        return (List<Transaction>) transactionRepository.findAllByWalletId(wallet.getId());
+    }
+
 }
