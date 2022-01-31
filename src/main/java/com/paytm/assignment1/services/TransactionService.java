@@ -61,11 +61,9 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public List<Transaction> getTransactions(String mobile){
+    public List<Transaction> getTransactions(int walletId){
         System.out.println("TransactionService: getTransactions()");
-        UserWallet wallet = walletRepository.findByUserMobile(mobile)
-                .orElseThrow( () -> new WalletNotFoundException(mobile));
-        return (List<Transaction>) transactionRepository.findAllByWalletId(wallet.getId());
+        return (List<Transaction>) transactionRepository.findAllByWalletId(walletId);
     }
 
 }

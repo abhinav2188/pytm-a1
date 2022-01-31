@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TransactionRepository extends JpaRepository<Transaction,Integer> {
 
-    @Query(value="SELECT * FROM transaction WHERE payee_wallet_id = ?1 OR payer_wallet_id = ?1 ORDER BY create_time", nativeQuery = true)
+    @Query(value="SELECT * FROM transaction WHERE payee_wallet_id = ?1 OR payer_wallet_id = ?1 ORDER BY create_time DESC", nativeQuery = true)
     Iterable<Transaction> findAllByWalletId(int id);
 
 }
