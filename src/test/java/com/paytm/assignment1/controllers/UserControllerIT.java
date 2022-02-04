@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource("/test.properties")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @AutoConfigureMockMvc
-public class HomeControllerIT {
+public class UserControllerIT {
 
     @LocalServerPort
     private int port;
@@ -119,7 +119,7 @@ public class HomeControllerIT {
         mockMvc.perform(mockRequest)
                 .andDo(print())
                 .andExpect(jsonPath("$.status",containsString("BAD_REQUEST")))
-                .andExpect(jsonPath("$.errorMsg",containsString("Error in field: userName, already taken, should be unique")));
+                .andExpect(jsonPath("$.errorMsg",containsString("userName: "+user.getUserName()+" is already taken, should be unique")));
     }
 
 
@@ -145,7 +145,7 @@ public class HomeControllerIT {
         mockMvc.perform(mockRequest)
                 .andDo(print())
                 .andExpect(jsonPath("$.status",containsString("BAD_REQUEST")))
-                .andExpect(jsonPath("$.errorMsg",containsString("Error in field: email, ")));
+                .andExpect(jsonPath("$.errorMsg",containsString("email: "+user.getEmail()+" is already taken, should be unique")));
     }
 
 
@@ -168,7 +168,7 @@ public class HomeControllerIT {
         mockMvc.perform(mockRequest)
                 .andDo(print())
                 .andExpect(jsonPath("$.status",containsString("BAD_REQUEST")))
-                .andExpect(jsonPath("$.errorMsg",containsString("Error in field: userName, property can't be null or empty")));
+                .andExpect(jsonPath("$.errorMsg",containsString("userName can't be null or empty")));
 
     }
 
@@ -235,8 +235,214 @@ public class HomeControllerIT {
 
     @Test
     @Order(8)
-    public void getUser_success(){
+    public void getUser_success() throws Exception{
         assertNotNull(this.jwtAccessToken);
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.get("/user/1")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken);
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(jsonPath("$.status",is("OK")))
+                .andExpect(jsonPath("$.errorMsg", emptyOrNullString()))
+                .andExpect(jsonPath("$.data.userName", is("testUser1")));
+    }
+
+    @Test
+    @Order(9)
+    public void getUser_failure_authenticationFailed() throws Exception{
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.get("/user/1")
+                .accept(MediaType.APPLICATION_JSON);
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    @Order(10)
+    public void getUser_failure_userNotPresent() throws Exception{
+        assertNotNull(this.jwtAccessToken);
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.get("/user/3")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken);
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
+                .andExpect(jsonPath("$.errorMsg", is("User not Found with id 3")))
+                .andExpect(jsonPath("$.data", blankOrNullString()));
+    }
+
+    @Test
+    @Order(11)
+    public void getUser_failure_authorizationFailed() throws Exception{
+        // getting other users data
+        assertNotNull(this.jwtAccessToken);
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.get("/user/2")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken);
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
+
+    //---------------------------------update-user----------------------------------------//
+
+    @Test
+    @Order(12)
+    public void updateUser_success() throws Exception{
+        assertNotNull(this.jwtAccessToken);
+        User user = User.builder()
+                .userName("testUser1")
+                .address1("some address")
+                .email("email1@test.com")
+                .mobile("9259267790")
+                .password("user@pass")
+                .firstName("Ussop")
+                .lastName("SniperKing")
+                .build();
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/user/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken)
+                .content(this.objectMapper.writeValueAsString(user));
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(jsonPath("$.status",is("OK")))
+                .andExpect(jsonPath("$.msg",is("user details updated")))
+                .andExpect(jsonPath("$.data.lastName",is("SniperKing")));
+
+    }
+
+    @Test
+    @Order(13)
+    public void updateUser_failure_usernameNotPresent() throws Exception{
+        assertNotNull(this.jwtAccessToken);
+        User user = User.builder()
+                .userName("ussop1")
+                .address1("some address")
+                .email("email1@test.com")
+                .mobile("9259267790")
+                .password("user@pass")
+                .firstName("Ussop")
+                .lastName("SniperKing")
+                .build();
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/user/3")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken)
+                .content(this.objectMapper.writeValueAsString(user));
+
+        mockMvc.perform(mockRequest)
+                .andDo(print())
+                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
+                .andExpect(jsonPath("$.errorMsg",is("User not Found with id "+3)));
+
+    }
+
+    @Test
+    @Order(14)
+    public void updateUser_failure_authenticationFailed() throws Exception{
+        User user = User.builder()
+                .userName("ussop1")
+                .address1("some address")
+                .email("email1@test.com")
+                .mobile("9259267790")
+                .password("user@pass")
+                .firstName("Ussop")
+                .lastName("SniperKing")
+                .build();
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/user/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(this.objectMapper.writeValueAsString(user));
+
+        mockMvc.perform(mockRequest)
+                .andExpect(status().isForbidden());
+
+    }
+
+    @Test
+    @Order(15)
+    public void updateUser_failure_validationFailedIfUpdate() throws Exception{
+        assertNotNull(this.jwtAccessToken);
+        User user = User.builder()
+                .userName("testUser2")
+                .address1("some address")
+                .email("email1@test.com")
+                .mobile("9259267790")
+                .password("user@pass")
+                .firstName("Ussop")
+                .lastName("SniperKing")
+                .build();
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/user/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken)
+                .content(this.objectMapper.writeValueAsString(user));
+        mockMvc.perform(mockRequest)
+                .andDo(MockMvcResultHandlers.log())
+                .andExpect(jsonPath("$.status",is("BAD_REQUEST")))
+                .andExpect(jsonPath("$.errorMsg", containsString("userName: "+user.getUserName()+" is already taken, should be unique")));
+    }
+
+    @Test
+    @Order(16)
+    public void updateUser_failure_authorizationFailed() throws Exception{
+        // trying to update other user data
+        assertNotNull(this.jwtAccessToken);
+        User user = User.builder()
+                .userName("sanji12")
+                .address1("some address")
+                .address2("all blue")
+                .email("email2@test.com")
+                .mobile("8273997032")
+                .password("user@pass")
+                .firstName("Sanji")
+                .build();
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.put("/user/2")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Bearer "+this.jwtAccessToken)
+                .content(this.objectMapper.writeValueAsString(user));
+
+        mockMvc.perform(mockRequest)
+                .andDo(log())
+                .andExpect(status().isForbidden());
+
+    }
+
+    @Test
+    @Order(12)
+    public void deleteUser_success() throws Exception{
+
+    }
+
+    @Test
+    @Order(12)
+    public void deleteUser_failure_usernameNotPresent() throws Exception{
+
+    }
+
+    @Test
+    @Order(12)
+    public void deleteUser_failure_authenticationFailed() throws Exception{
+
+    }
+
+    @Test
+    @Order(12)
+    public void deleteUser_failure_authorizationFailed() throws Exception{
+        // trying to update other user data
+    }
+
+    @Test
+    @Order(12)
+    public void getAllUsers() throws Exception{
 
     }
 

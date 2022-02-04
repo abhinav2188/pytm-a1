@@ -2,6 +2,7 @@ package com.paytm.assignment1.controllers;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
 import com.paytm.assignment1.dto.BaseResponseDto;
+import com.paytm.assignment1.dto.UserRequestDto;
 import com.paytm.assignment1.dto.UserResponseDto;
 import com.paytm.assignment1.modals.User;
 import com.paytm.assignment1.services.UserService;
@@ -27,8 +28,8 @@ public class UserController {
 
     @PostMapping
     @ResponseBody
-    public BaseResponseDto addUser(@RequestBody User newUser) {
-        User addedUser = userService.addUser(newUser);
+    public BaseResponseDto addUser(@RequestBody UserRequestDto requestDto) {
+        User addedUser = userService.addUser(requestDto.getUserModal());
         return BaseResponseDto.builder()
                 .status(HttpStatus.CREATED)
                 .msg("new user created")
@@ -62,8 +63,8 @@ public class UserController {
 
     @PutMapping("/{id}")
     @ResponseBody
-    public BaseResponseDto updateUser(@RequestBody User newUser,@PathVariable Integer id) {
-        User updatedUser = userService.updateUser(id,newUser);
+    public BaseResponseDto updateUser(@RequestBody UserRequestDto requestDto,@PathVariable Integer id) {
+        User updatedUser = userService.updateUser(id,requestDto.getUserModal());
         return BaseResponseDto.builder()
                 .status(HttpStatus.OK)
                 .data(new UserResponseDto(updatedUser))
