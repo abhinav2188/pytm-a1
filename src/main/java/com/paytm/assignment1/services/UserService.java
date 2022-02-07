@@ -4,7 +4,6 @@ import com.paytm.assignment1.exceptions.DuplicateFieldException;
 import com.paytm.assignment1.exceptions.EmptyFieldException;
 import com.paytm.assignment1.repositories.UserRepository;
 import com.paytm.assignment1.exceptions.UserNotFoundException;
-import com.paytm.assignment1.exceptions.UserValidationException;
 import com.paytm.assignment1.modals.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

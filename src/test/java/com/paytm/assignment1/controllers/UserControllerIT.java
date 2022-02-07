@@ -5,6 +5,7 @@ import com.paytm.assignment1.Assignment1Application;
 import com.paytm.assignment1.dto.AuthenticateRequestDto;
 import com.paytm.assignment1.dto.BaseResponseDto;
 import com.paytm.assignment1.modals.User;
+import com.paytm.assignment1.repositories.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -34,6 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration
 @TestPropertySource("/test.properties")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @AutoConfigureMockMvc
 public class UserControllerIT {
 
@@ -42,6 +44,9 @@ public class UserControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -54,6 +59,18 @@ public class UserControllerIT {
     @BeforeEach
     public void beforeAnyTest(){
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    }
+
+    @AfterAll
+    public void clearDatabase() throws Exception {
+        System.out.println("After all tests---------------");
+        assertNotNull(this.userRepository);
+        assertNotNull(this.jwtAccessToken);
+        this.userRepository.deleteAll();
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/all")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization","Bearer"+this.jwtAccessToken))
+                .andExpect(status().isForbidden());
     }
 
     public String createRequestUrl(String path){
@@ -417,9 +434,15 @@ public class UserControllerIT {
     }
 
     @Test
-    @Order(12)
+    @Order(17)
     public void deleteUser_success() throws Exception{
-
+        assertNotNull(this.jwtAccessToken);
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.delete("/user/1")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("Authorization","Bearer "+this.jwtAccessToken);
+        this.mockMvc.perform(mockRequest)
+                .andExpect(jsonPath("$.msg",is("user deleted successfully")))
+                .andExpect(jsonPath("$.status",is("OK")));
     }
 
     @Test
