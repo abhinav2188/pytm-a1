@@ -5,9 +5,10 @@ import com.paytm.assignment1.exceptions.WalletNotFoundException;
 import com.paytm.assignment1.modals.Transaction;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.repositories.TransactionRepository;
-import com.paytm.assignment1.repositories.UserRepository;
 import com.paytm.assignment1.repositories.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,13 +19,13 @@ import java.util.List;
 public class TransactionService {
 
     @Autowired
-    UserRepository userRepository;
-
-    @Autowired
     WalletRepository walletRepository;
 
     @Autowired
     TransactionRepository transactionRepository;
+
+    @Autowired
+    KafkaTemplate<String,String> kafkaTemplate;
 
 
     public Transaction addTransaction(String payerMob, String payeeMob, double amount){
@@ -45,6 +46,8 @@ public class TransactionService {
 
         // checking balance
         if(payerWallet.getBalanceAmount() < amount){
+            //failed trans event to kafka
+            kafkaTemplate.send("transactions","Failed Transaction : Amount "+amount+" from "+payerMob+ " wallet to "+payeeMob+" wallet");
             transaction.setStatus(TransactionStatus.FAILED);
             return transactionRepository.save(transaction);
         }
@@ -60,12 +63,22 @@ public class TransactionService {
         transaction.setPayeeClosingBalance(payeeWallet.getBalanceAmount());
         transaction.setStatus(TransactionStatus.SUCCESS);
 
-        return transactionRepository.save(transaction);
+        transaction = transactionRepository.save(transaction);
+
+        // success trans event to kafka
+        kafkaTemplate.send("transactions","Success Transaction : Amount "+amount+" from "+payerMob+ " wallet to "+payeeMob+" wallet");
+
+        return transaction;
     }
 
     public List<Transaction> getTransactions(int walletId){
         System.out.println("TransactionService: getTransactions()");
         return (List<Transaction>) transactionRepository.findAllByWalletId(walletId);
+    }
+
+    @KafkaListener(topics = "transactions", groupId = "user-wallet-group")
+    public void transactionsKafkaListener(String msg){
+        System.out.println("Received kafka event in transactions: "+msg);
     }
 
 }

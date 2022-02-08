@@ -1,6 +1,7 @@
 package com.paytm.assignment1;
 
 import com.paytm.assignment1.filters.JwtRequestFilter;
+import com.paytm.assignment1.filters.UserAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -23,6 +24,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     JwtRequestFilter jwtRequestFilter;
+
+    @Autowired
+    UserAuthorizationFilter userAuthorizationFilter;
 
     @Override
     @Bean
@@ -49,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
+//        http.addFilterAfter(userAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean

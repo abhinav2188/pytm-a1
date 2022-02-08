@@ -1,6 +1,6 @@
 package com.paytm.assignment1.modals;
 
-import org.slf4j.Logger;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 // modal class for user details , helps in spring security (getting users logging in)
+@ToString
 public class MyUserDetails implements UserDetails {
 
     private String username;
