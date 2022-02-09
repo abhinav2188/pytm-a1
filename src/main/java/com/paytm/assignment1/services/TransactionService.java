@@ -1,12 +1,17 @@
 package com.paytm.assignment1.services;
 
 import com.paytm.assignment1.enums.TransactionStatus;
+import com.paytm.assignment1.exceptions.TransactionNotFoundException;
 import com.paytm.assignment1.exceptions.WalletNotFoundException;
 import com.paytm.assignment1.modals.Transaction;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.repositories.TransactionRepository;
 import com.paytm.assignment1.repositories.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -71,11 +76,15 @@ public class TransactionService {
         return transaction;
     }
 
-    public List<Transaction> getTransactions(int walletId){
+    public List<Transaction> getTransactions(int walletId, int pageNo){
+        Pageable pages = PageRequest.of(pageNo,2, Sort.by("create_time").descending());
         System.out.println("TransactionService: getTransactions()");
-        return (List<Transaction>) transactionRepository.findAllByWalletId(walletId);
+        return transactionRepository.findAllByWalletId(walletId,pages);
     }
 
+    public Transaction getTransaction(int txnId){
+        return transactionRepository.findById(txnId).orElseThrow(() -> new TransactionNotFoundException(txnId));
+    }
     @KafkaListener(topics = "transactions", groupId = "user-wallet-group")
     public void transactionsKafkaListener(String msg){
         System.out.println("Received kafka event in transactions: "+msg);

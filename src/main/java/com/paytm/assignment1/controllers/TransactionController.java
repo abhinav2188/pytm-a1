@@ -5,7 +5,6 @@ import com.paytm.assignment1.dto.BaseResponseDto;
 import com.paytm.assignment1.dto.UserTransactionResponseDto;
 import com.paytm.assignment1.modals.Transaction;
 import com.paytm.assignment1.modals.UserWallet;
-import com.paytm.assignment1.repositories.WalletRepository;
 import com.paytm.assignment1.services.TransactionService;
 import com.paytm.assignment1.services.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,14 +24,6 @@ public class TransactionController {
     @Autowired
     WalletService walletService;
 
-    @GetMapping
-    public BaseResponseDto getTransactions(){
-        return BaseResponseDto.builder()
-                .msg("all transactions")
-                .status(HttpStatus.OK)
-                .build();
-    }
-
     @PostMapping
     public BaseResponseDto addTransaction(@RequestBody AddTransactionRequestDto requestDto){
         Transaction transaction = transactionService.addTransaction(requestDto.getPayerMobile(), requestDto.getPayeeMobile(), requestDto.getAmount());
@@ -44,15 +35,23 @@ public class TransactionController {
     }
 
     @GetMapping("/{mobile}")
-    public BaseResponseDto getTransactions(@PathVariable String mobile){
+    public BaseResponseDto getTransactions(@PathVariable String mobile, @RequestParam int pageNo){
         UserWallet wallet = walletService.getWallet(mobile);
-        List<Transaction> userTransactions = transactionService.getTransactions(wallet.getId());
+        List<Transaction> userTransactions = transactionService.getTransactions(wallet.getId(),pageNo);
         List<UserTransactionResponseDto> responseDtos = userTransactions.stream()
                 .map(t -> new UserTransactionResponseDto(t,wallet.getId()))
                 .collect(Collectors.toList());
 
         return BaseResponseDto.builder()
                 .data(responseDtos)
+                .status(HttpStatus.OK)
+                .build();
+    }
+
+    @GetMapping
+    public BaseResponseDto getTransaction(@RequestParam int txnId){
+        return BaseResponseDto.builder()
+                .data(transactionService.getTransaction(txnId))
                 .status(HttpStatus.OK)
                 .build();
     }
