@@ -1,13 +1,12 @@
 package com.paytm.assignment1.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.paytm.assignment1.Assignment1Application;
 import com.paytm.assignment1.dto.AuthenticateRequestDto;
-import com.paytm.assignment1.dto.BaseResponseDto;
 import com.paytm.assignment1.dto.UserRequestDto;
 import com.paytm.assignment1.repositories.UserRepository;
+import com.paytm.assignment1.repositories.WalletRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,13 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-
-import javax.print.attribute.standard.Media;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -42,7 +35,10 @@ public class WalletControllerIT {
     private MockMvc mockMvc;
 
     @Autowired
-    UserController userController;
+    WalletRepository walletRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -69,6 +65,7 @@ public class WalletControllerIT {
             .address1("Britannia")
             .password("user@pass")
             .build();
+
     @BeforeAll
     public void setupTestData() throws Exception {
 
@@ -101,6 +98,11 @@ public class WalletControllerIT {
 
     }
 
+    @AfterAll
+    public void clearDatabase(){
+        walletRepository.deleteAll();
+        userRepository.deleteAll();
+    }
 
     // --------------------------------- /create-wallet/{mobile} ---------------------- //
     @Test
