@@ -7,6 +7,8 @@ import com.paytm.assignment1.modals.Transaction;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.repositories.TransactionRepository;
 import com.paytm.assignment1.repositories.WalletRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,9 +34,10 @@ public class TransactionService {
     @Autowired
     KafkaTemplate<String,String> kafkaTemplate;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public Transaction addTransaction(String payerMob, String payeeMob, double amount){
-
+       logger.trace("addTransaction()");
         // checking if both have their wallets
         UserWallet payerWallet = walletRepository.findByUserMobile(payerMob)
                 .orElseThrow( () -> new WalletNotFoundException(payerMob));
@@ -77,14 +80,17 @@ public class TransactionService {
     }
 
     public List<Transaction> getTransactions(int walletId, int pageNo){
+        logger.trace("getTransactions()");
         Pageable pages = PageRequest.of(pageNo,2, Sort.by("create_time").descending());
         System.out.println("TransactionService: getTransactions()");
         return transactionRepository.findAllByWalletId(walletId,pages);
     }
 
     public Transaction getTransaction(int txnId){
+        logger.trace("getTransaction()");
         return transactionRepository.findById(txnId).orElseThrow(() -> new TransactionNotFoundException(txnId));
     }
+
     @KafkaListener(topics = "transactions", groupId = "user-wallet-group")
     public void transactionsKafkaListener(String msg){
         System.out.println("Received kafka event in transactions: "+msg);

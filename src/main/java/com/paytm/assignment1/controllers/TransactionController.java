@@ -7,6 +7,8 @@ import com.paytm.assignment1.modals.Transaction;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.services.TransactionService;
 import com.paytm.assignment1.services.WalletService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +26,11 @@ public class TransactionController {
     @Autowired
     WalletService walletService;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @PostMapping
     public BaseResponseDto addTransaction(@RequestBody AddTransactionRequestDto requestDto){
+        logger.trace("/transaction addTransaction()", requestDto);
         Transaction transaction = transactionService.addTransaction(requestDto.getPayerMobile(), requestDto.getPayeeMobile(), requestDto.getAmount());
         return BaseResponseDto.builder()
                 .status(HttpStatus.CREATED)
@@ -36,6 +41,7 @@ public class TransactionController {
 
     @GetMapping("/{mobile}")
     public BaseResponseDto getTransactions(@PathVariable String mobile, @RequestParam int pageNo){
+        logger.trace("/transaction/{mobile} getTransactions()");
         UserWallet wallet = walletService.getWallet(mobile);
         List<Transaction> userTransactions = transactionService.getTransactions(wallet.getId(),pageNo);
         List<UserTransactionResponseDto> responseDtos = userTransactions.stream()
@@ -50,6 +56,7 @@ public class TransactionController {
 
     @GetMapping
     public BaseResponseDto getTransaction(@RequestParam int txnId){
+        logger.trace("/transaction getTransaction");
         return BaseResponseDto.builder()
                 .data(transactionService.getTransaction(txnId))
                 .status(HttpStatus.OK)

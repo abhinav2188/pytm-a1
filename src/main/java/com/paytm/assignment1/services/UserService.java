@@ -5,6 +5,8 @@ import com.paytm.assignment1.exceptions.EmptyFieldException;
 import com.paytm.assignment1.repositories.UserRepository;
 import com.paytm.assignment1.exceptions.UserNotFoundException;
 import com.paytm.assignment1.modals.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +18,14 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     private boolean isNullOrEmpty(String obj){
         return (obj==null || obj.length() == 0);
     }
 
     private boolean validateUser(User user){
-        System.out.println("user validations -------------- {");
+        logger.debug("validating new user");
         //request validation
         if(isNullOrEmpty(user.getFirstName())) throw new EmptyFieldException("firstName");
         if(isNullOrEmpty(user.getUserName())) throw new EmptyFieldException("userName");
@@ -33,14 +37,13 @@ public class UserService {
         if(userRepository.existsByMobile(user.getMobile())) throw new DuplicateFieldException("mobile",user.getMobile());
         if(userRepository.existsByEmail(user.getEmail())) throw new DuplicateFieldException("email",user.getEmail());
         if(userRepository.existsByUserName(user.getUserName())) throw new DuplicateFieldException("userName",user.getUserName());
-        System.out.println("user validations -------------- }");
+        logger.debug("user validations done");
         return true;
     }
 
     private User validatedUpdateUser(User user, User updateUser){
 
-        System.out.println("old: "+user);
-        System.out.println("ewn: "+ updateUser);
+        logger.debug("validating fields for updating user");
         // updating values only if they are not null
         if(!isNullOrEmpty(updateUser.getFirstName()))
             user.setFirstName(updateUser.getFirstName());
@@ -78,11 +81,14 @@ public class UserService {
                 user.setEmail(updateUser.getEmail());
             }
         }
+
+        logger.debug("validation complete");
         return user;
     }
 
 
     public User addUser(User newUser){
+        logger.trace("addUser()");
         validateUser(newUser);
         newUser.setActive(true);
         newUser.setRoles("USER");
@@ -90,25 +96,27 @@ public class UserService {
     }
 
     public User getUser(int id){
+        logger.trace("getUser()");
         return userRepository.findById(id).orElseThrow( () -> new UserNotFoundException(id));
     }
 
     public Iterable<User> getAllUsers(){
+        logger.trace("getAllUsers()");
         return userRepository.findAll();
     }
 
     @Transactional
     public User updateUser(int id, User newUser){
-        System.out.println("UserService updateUser()--------");
+        logger.trace("updateUser()");
         return userRepository.findById(id).map( user -> {
             user = validatedUpdateUser(user,newUser);
-            System.out.println("updating user for update"+user);
             return userRepository.save(user);
         }).orElseThrow( () -> new UserNotFoundException(id));
     }
 
     @Transactional
     public boolean deleteUser(int id){
+        logger.trace("deleteUser()");
         if(!userRepository.existsById(id)) throw new UserNotFoundException(id);
         if(userRepository.setUserActiveState(id,false)  == 0) return false;
         return true;

@@ -1,6 +1,8 @@
 package com.paytm.assignment1.filters;
 
 import com.paytm.assignment1.util.JwtUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,10 +27,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtil jwtUtil;
 
+    Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-        System.out.println("authentication filter__________________{");
+        logger.trace("Authentication Filter");
         final String authHeader = request.getHeader("Authorization");
 
         String userName = null;
@@ -47,7 +51,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
         }
-        System.out.println("authentication filter__________________}");
 
         filterChain.doFilter(request,response);
 

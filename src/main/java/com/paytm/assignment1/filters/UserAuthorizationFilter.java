@@ -1,5 +1,7 @@
 package com.paytm.assignment1.filters;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -14,9 +16,12 @@ import java.io.IOException;
 @Component
 public class UserAuthorizationFilter extends OncePerRequestFilter {
 
+    Logger logger = LoggerFactory.getLogger(UserAuthorizationFilter.class);
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("--------userAuthorizationFilter------------{");
+
+        logger.trace("Authorization Filter");
 //        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //        System.out.println(userDetails);
 //        System.out.println(request.getRequestURI());
@@ -24,7 +29,6 @@ public class UserAuthorizationFilter extends OncePerRequestFilter {
 //
 //
 //        System.out.println(request);
-        System.out.println("--------userAuthorizationFilter------------}");
         filterChain.doFilter(request,response);
 
     }

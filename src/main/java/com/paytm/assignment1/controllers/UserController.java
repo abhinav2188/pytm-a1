@@ -6,6 +6,8 @@ import com.paytm.assignment1.dto.UserRequestDto;
 import com.paytm.assignment1.dto.UserResponseDto;
 import com.paytm.assignment1.modals.User;
 import com.paytm.assignment1.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public UserController(UserService userService){
         this.userService = userService;
     }
@@ -29,6 +33,7 @@ public class UserController {
     @PostMapping
     @ResponseBody
     public BaseResponseDto addUser(@RequestBody UserRequestDto requestDto) {
+        logger.trace("/user addUser() request");
         User addedUser = userService.addUser(requestDto.getUserModal());
         return BaseResponseDto.builder()
                 .status(HttpStatus.CREATED)
@@ -40,6 +45,7 @@ public class UserController {
     @GetMapping(path="/all")
     @ResponseBody
     public BaseResponseDto getAllUsers(){
+        logger.trace("/user/all getAllUsers() request");
         Iterable<User> users = userService.getAllUsers();
         List<UserResponseDto> userDtos = new ArrayList<>();
         users.forEach(user -> {
@@ -54,6 +60,7 @@ public class UserController {
     @GetMapping("/{id}")
     @ResponseBody
     public BaseResponseDto getUser(@PathVariable Integer id){
+        logger.trace("/user/{id} getUser() request");
         User user = userService.getUser(id);
         return BaseResponseDto.builder()
                 .status(HttpStatus.OK)
@@ -64,6 +71,7 @@ public class UserController {
     @PutMapping("/{id}")
     @ResponseBody
     public BaseResponseDto updateUser(@RequestBody UserRequestDto requestDto,@PathVariable Integer id) {
+        logger.trace("/user/{id} updateUser() request");
         User updatedUser = userService.updateUser(id,requestDto.getUserModal());
         return BaseResponseDto.builder()
                 .status(HttpStatus.OK)
@@ -75,6 +83,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     @ResponseBody
     public BaseResponseDto deleteUser(@PathVariable Integer id){
+        logger.trace("/user/{id} deleteUser() request");
         userService.deleteUser(id);
         return BaseResponseDto.builder()
                 .status(HttpStatus.OK)

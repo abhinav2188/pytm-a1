@@ -7,6 +7,8 @@ import com.paytm.assignment1.modals.User;
 import com.paytm.assignment1.modals.UserWallet;
 import com.paytm.assignment1.repositories.UserRepository;
 import com.paytm.assignment1.repositories.WalletRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -27,7 +29,10 @@ public class WalletService {
     @Autowired
     private KafkaTemplate<String,String> kafkaTemplate;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     public UserWallet createWallet(String mobile){
+        logger.trace("createWallet() ");
         User myUser = userRepository.findByMobile(mobile).map( user -> {
             if(user.getWallet() != null)
                 throw new WalletAlreadyPresentException(mobile);
@@ -44,6 +49,7 @@ public class WalletService {
     }
 
     public UserWallet addBalance(String mobile, double amount){
+        logger.trace("addBalance() ");
         UserWallet wallet = walletRepository.findByUserMobile(mobile)
                 .orElseThrow(() -> new WalletNotFoundException(mobile));
         wallet.setBalanceAmount(wallet.getBalanceAmount() + amount);
@@ -51,13 +57,13 @@ public class WalletService {
     }
 
     public UserWallet getWallet(String mobile){
+        logger.trace("getWallet() ");
         UserWallet wallet = walletRepository.findByUserMobile(mobile)
                 .orElseThrow(() -> new WalletNotFoundException(mobile));
         return wallet;
     }
 
     @KafkaListener(topics = "create-wallet", groupId = "user-wallet-group")
-    public void listenCreateWallet(String msg){
-        System.out.println("Received kafka event for create-wallet : "+msg);
+    public void listenCreateWallet(String msg){logger.debug("Received kafka event for create-wallet : "+msg);
     }
 }
