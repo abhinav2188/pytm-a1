@@ -45,6 +45,7 @@ public class WalletControllerIT {
 
     private static String jwtAccessToken;
     private int walletId;
+    private static String jwtAccessToken2;
 
     // demo user
     UserRequestDto user1 = UserRequestDto.builder()
@@ -96,6 +97,17 @@ public class WalletControllerIT {
         // save the token
         this.jwtAccessToken = "Bearer "+ JsonPath.read(response.getResponse().getContentAsString(),"$.data.jwt");
 
+        // authenticate the user2
+        AuthenticateRequestDto auth2 = new AuthenticateRequestDto(user2.getUserName(),user2.getPassword());
+        MvcResult response2 = mockMvc.perform(MockMvcRequestBuilders.post("/authenticate")
+                        .content(objectMapper.writeValueAsString(auth2))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.data.jwt", notNullValue()))
+                .andReturn();
+
+        // save the token2
+        this.jwtAccessToken2 = "Bearer "+ JsonPath.read(response2.getResponse().getContentAsString(),"$.data.jwt");
     }
 
     @AfterAll
@@ -138,8 +150,7 @@ public class WalletControllerIT {
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .header("Authorization",this.jwtAccessToken))
-                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
-                .andExpect(jsonPath("$.errorMsg",is("User not Found with id 8630018154")));
+                .andExpect(status().isForbidden());
 
     }
 
@@ -159,8 +170,14 @@ public class WalletControllerIT {
 
     @Test
     @Order(1)
-    public void createWallet_failure_authorizationFailed(){
-
+    public void createWallet_failure_authorizationFailed() throws Exception {
+        assertNotNull(this.jwtAccessToken);
+        mockMvc.perform(MockMvcRequestBuilders.post("/create-wallet/"+user2.getMobile())
+                        .accept(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization",this.jwtAccessToken))
+                .andDo(print())
+                .andExpect(status().isForbidden());
     }
 
     // ------------------------------------get /wallet/{mobile} ----------------------------------//
@@ -180,22 +197,21 @@ public class WalletControllerIT {
     @Test
     @Order(2)
     public void getWallet_failure_UserNotPresent() throws Exception {
+        // in case of role user, any user is not allowed to fetch other user details
         assertNotNull(this.jwtAccessToken);
         this.mockMvc.perform(MockMvcRequestBuilders.get("/wallet/8630018154")
                         .header("Authorization", this.jwtAccessToken)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
-                .andExpect(jsonPath("$.errorMsg",is("wallet not found with userId: 8630018154")));
+                .andExpect(status().isForbidden());
     }
 
     @Test
     @Order(2)
     public void getWallet_failure_WalletNotPresent() throws Exception {
-        // authorization should also fail here
-        assertNotNull(this.jwtAccessToken);
+        assertNotNull(this.jwtAccessToken2);
         this.mockMvc.perform(MockMvcRequestBuilders.get("/wallet/"+user2.getMobile())
-                        .header("Authorization", this.jwtAccessToken)
+                        .header("Authorization", this.jwtAccessToken2)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(jsonPath("$.status",is("NOT_FOUND")))

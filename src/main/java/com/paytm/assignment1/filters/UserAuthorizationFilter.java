@@ -76,6 +76,28 @@ public class UserAuthorizationFilter extends OncePerRequestFilter {
                     throw new UserAuthorizationException(userId);
                 }
             }
+            if(requestURI.startsWith("/create-wallet/")){
+                String userMobile = requestURI.substring(15);
+                logger.debug("userMobile: "+userMobile);
+                if(!userRepository.existsByUserNameAndMobile(userDetails.getUsername(), userMobile)){
+                    throw new UserAuthorizationException(userMobile);
+                }
+            }
+            if(requestURI.startsWith("/wallet/")){
+                String userMobile = requestURI.substring(8);
+                logger.debug("userMobile: "+userMobile);
+                if(!userRepository.existsByUserNameAndMobile(userDetails.getUsername(), userMobile)){
+                    throw new UserAuthorizationException(userMobile);
+                }
+            }
+            if(requestURI.startsWith("/add-balance")){
+                String userMobile = request.getParameter("mobile");
+                logger.debug("userMobile: "+userMobile);
+                if(!userRepository.existsByUserNameAndMobile(userDetails.getUsername(), userMobile)){
+                    throw new UserAuthorizationException(userMobile);
+                }
+            }
+
         }catch(UserAuthorizationException ex){
             logger.debug("sending error 403");
             response.sendError(403,ex.getMessage());
