@@ -249,7 +249,16 @@ public class WalletControllerIT {
                 .andExpect(jsonPath("$.data.id",is(this.walletId)))
                 .andExpect(jsonPath("$.data.balanceAmount",is(prevBalance+500.0)))
                 .andReturn();
-
     }
 
+    @Test
+    @Order(2)
+    public void addBalance_failure_UserAuthorizationFailed() throws Exception {
+        // adding balance in user2 using authToken of user1
+        assertNotNull(jwtAccessToken);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/wallet/"+user2.getMobile())
+                        .header("Authorization", jwtAccessToken)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
 }

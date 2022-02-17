@@ -8627,3 +8627,629 @@ java.lang.ClassCastException: java.lang.String cannot be cast to org.springframe
 2022-02-17 14:54:11.922  INFO 27555 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-02-17 14:54:11.927  INFO 27555 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-02-17 14:54:11.942  INFO 27555 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-17 15:00:20.460  INFO 27873 --- [main] c.p.a.controllers.WalletControllerIT     : Starting WalletControllerIT using Java 1.8.0_231 on PPBNOMBPBT-212.local with PID 27873 (started by abhinav.rastogi in /Users/abhinav.rastogi/IdeaProjects/pytm-a1)
+2022-02-17 15:00:20.463 DEBUG 27873 --- [main] c.p.a.controllers.WalletControllerIT     : Running with Spring Boot v2.6.2, Spring v5.3.14
+2022-02-17 15:00:20.464  INFO 27873 --- [main] c.p.a.controllers.WalletControllerIT     : No active profile set, falling back to default profiles: default
+2022-02-17 15:00:21.834  INFO 27873 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 15:00:21.929  INFO 27873 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 3 JPA repository interfaces.
+2022-02-17 15:00:23.527  INFO 27873 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-02-17 15:00:23.545  INFO 27873 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 15:00:23.545  INFO 27873 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-17 15:00:23.726  INFO 27873 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-17 15:00:23.726  INFO 27873 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3220 ms
+2022-02-17 15:00:24.302  INFO 27873 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 15:00:24.342  INFO 27873 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2022-02-17 15:00:24.471  INFO 27873 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-17 15:00:24.607  INFO 27873 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-02-17 15:00:25.247  INFO 27873 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-02-17 15:00:25.273  INFO 27873 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 15:00:26.368 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table transaction drop foreign key FK7e1ufoxgxkepykf6bf1n2mdxd
+2022-02-17 15:00:26.417 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table transaction drop foreign key FK9o2lusihahqlorx7j5buywdu6
+2022-02-17 15:00:26.428 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table user drop foreign key FKg1j9nf3d8g7f8wkuhewidxuei
+2022-02-17 15:00:26.436 DEBUG 27873 --- [main] org.hibernate.SQL                        : drop table if exists hibernate_sequence
+2022-02-17 15:00:26.443 DEBUG 27873 --- [main] org.hibernate.SQL                        : drop table if exists transaction
+2022-02-17 15:00:26.449 DEBUG 27873 --- [main] org.hibernate.SQL                        : drop table if exists user
+2022-02-17 15:00:26.454 DEBUG 27873 --- [main] org.hibernate.SQL                        : drop table if exists user_wallet
+2022-02-17 15:00:26.468 DEBUG 27873 --- [main] org.hibernate.SQL                        : create table hibernate_sequence (next_val bigint) engine=InnoDB
+2022-02-17 15:00:26.488 DEBUG 27873 --- [main] org.hibernate.SQL                        : insert into hibernate_sequence values ( 1 )
+2022-02-17 15:00:26.491 DEBUG 27873 --- [main] org.hibernate.SQL                        : create table transaction (id integer not null, create_time datetime(6), update_time datetime(6), amount double precision not null, payee_closing_balance double precision not null, payer_closing_balance double precision not null, status integer, payee_wallet_id integer not null, payer_wallet_id integer not null, primary key (id)) engine=InnoDB
+2022-02-17 15:00:26.503 DEBUG 27873 --- [main] org.hibernate.SQL                        : create table user (id integer not null, create_time datetime(6), update_time datetime(6), address1 varchar(255) not null, address2 varchar(255), email varchar(255) not null, first_name varchar(255) not null, is_active bit not null, last_name varchar(255), mobile varchar(255) not null, password varchar(255) not null, roles varchar(255) not null, user_name varchar(255) not null, wallet_id integer, primary key (id)) engine=InnoDB
+2022-02-17 15:00:26.510 DEBUG 27873 --- [main] org.hibernate.SQL                        : create table user_wallet (id integer not null, create_time datetime(6), update_time datetime(6), balance_amount double precision not null, is_active bit not null, primary key (id)) engine=InnoDB
+2022-02-17 15:00:26.517 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
+2022-02-17 15:00:26.531 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table user add constraint UK_cnjwxx5favk5ycqajjt17fwy1 unique (mobile)
+2022-02-17 15:00:26.539 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table user add constraint UK_lqjrcobrh9jc8wpcar64q1bfh unique (user_name)
+2022-02-17 15:00:26.551 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table transaction add constraint FK7e1ufoxgxkepykf6bf1n2mdxd foreign key (payee_wallet_id) references user_wallet (id)
+2022-02-17 15:00:26.564 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table transaction add constraint FK9o2lusihahqlorx7j5buywdu6 foreign key (payer_wallet_id) references user_wallet (id)
+2022-02-17 15:00:26.580 DEBUG 27873 --- [main] org.hibernate.SQL                        : alter table user add constraint FKg1j9nf3d8g7f8wkuhewidxuei foreign key (wallet_id) references user_wallet (id)
+2022-02-17 15:00:26.655  INFO 27873 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 15:00:26.662  INFO 27873 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 15:00:27.615 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Filter 'userAuthorizationFilter' configured for use
+2022-02-17 15:00:27.617 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Filter 'jwtRequestFilter' configured for use
+2022-02-17 15:00:27.735  WARN 27873 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 15:00:28.383  INFO 27873 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@205f52ea, org.springframework.security.web.context.SecurityContextPersistenceFilter@6aadb092, org.springframework.security.web.header.HeaderWriterFilter@75de7009, org.springframework.security.web.authentication.logout.LogoutFilter@6614ecca, com.paytm.assignment1.filters.JwtRequestFilter@1d06801f, com.paytm.assignment1.filters.UserAuthorizationFilter@6ffbf0ac, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4caf875c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5621a671, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34f60be9, org.springframework.security.web.session.SessionManagementFilter@6ad3fbe4, org.springframework.security.web.access.ExceptionTranslationFilter@11dbcb3b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1123d461]
+2022-02-17 15:00:29.701  INFO 27873 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2022-02-17 15:00:29.703  INFO 27873 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-02-17 15:00:29.705  INFO 27873 --- [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-02-17 15:00:29.902  INFO 27873 --- [main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [127.0.0.1:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2022-02-17 15:00:30.070  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 15:00:30.072  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 15:00:30.072  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645090230066
+2022-02-17 15:00:30.516  INFO 27873 --- [kafka-admin-client-thread | adminclient-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-1 unregistered
+2022-02-17 15:00:30.526  INFO 27873 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 15:00:30.526  INFO 27873 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 15:00:30.527  INFO 27873 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 15:00:30.587  INFO 27873 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 15:00:30.662  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 15:00:30.664  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 15:00:30.665  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645090230662
+2022-02-17 15:00:30.667  INFO 27873 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Subscribed to topic(s): transactions
+2022-02-17 15:00:30.750  INFO 27873 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 15:00:30.770  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 15:00:30.787  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 15:00:30.787  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645090230770
+2022-02-17 15:00:30.788  INFO 27873 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Subscribed to topic(s): create-wallet
+2022-02-17 15:00:30.825  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 15:00:30.825  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 15:00:30.827  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 15:00:30.828  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 15:00:30.832  INFO 27873 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 58949 (http) with context path ''
+2022-02-17 15:00:30.833  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 15:00:30.833  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 15:00:30.872  INFO 27873 --- [main] c.p.a.controllers.WalletControllerIT     : Started WalletControllerIT in 11.236 seconds (JVM running for 13.264)
+2022-02-17 15:00:30.962  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 15:00:30.962  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 15:00:30.973  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 15:00:30.974  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 15:00:31.140 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:31.141 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:31.142 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.142 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.161 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.161 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.268 TRACE 27873 --- [main] c.p.a.controllers.UserController         : /user addUser() request
+2022-02-17 15:00:31.288 TRACE 27873 --- [main] c.p.assignment1.services.UserService     : addUser()
+2022-02-17 15:00:31.290 DEBUG 27873 --- [main] c.p.assignment1.services.UserService     : validating new user
+2022-02-17 15:00:31.331 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.mobile=? limit ?
+2022-02-17 15:00:31.375 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
+2022-02-17 15:00:31.384 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? limit ?
+2022-02-17 15:00:31.385 DEBUG 27873 --- [main] c.p.assignment1.services.UserService     : user validations done
+2022-02-17 15:00:31.426 DEBUG 27873 --- [main] org.hibernate.SQL                        : select next_val as id_val from hibernate_sequence for update
+2022-02-17 15:00:31.429 DEBUG 27873 --- [main] org.hibernate.SQL                        : update hibernate_sequence set next_val= ? where next_val=?
+2022-02-17 15:00:31.451 DEBUG 27873 --- [main] org.hibernate.SQL                        : insert into user (create_time, update_time, address1, address2, email, first_name, is_active, last_name, mobile, password, roles, user_name, wallet_id, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-02-17 15:00:31.534 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:31.534 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:31.534 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.534 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.535 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.535 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.538 TRACE 27873 --- [main] c.p.a.controllers.UserController         : /user addUser() request
+2022-02-17 15:00:31.538 TRACE 27873 --- [main] c.p.assignment1.services.UserService     : addUser()
+2022-02-17 15:00:31.538 DEBUG 27873 --- [main] c.p.assignment1.services.UserService     : validating new user
+2022-02-17 15:00:31.538 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.mobile=? limit ?
+2022-02-17 15:00:31.543 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.email=? limit ?
+2022-02-17 15:00:31.544 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? limit ?
+2022-02-17 15:00:31.545 DEBUG 27873 --- [main] c.p.assignment1.services.UserService     : user validations done
+2022-02-17 15:00:31.546 DEBUG 27873 --- [main] org.hibernate.SQL                        : select next_val as id_val from hibernate_sequence for update
+2022-02-17 15:00:31.547 DEBUG 27873 --- [main] org.hibernate.SQL                        : update hibernate_sequence set next_val= ? where next_val=?
+2022-02-17 15:00:31.550 DEBUG 27873 --- [main] org.hibernate.SQL                        : insert into user (create_time, update_time, address1, address2, email, first_name, is_active, last_name, mobile, password, roles, user_name, wallet_id, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-02-17 15:00:31.569 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:31.569 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:31.569 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.569 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.570 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.570 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.573 TRACE 27873 --- [main] c.p.a.controllers.HomeController         : Create Authentication Token Request
+2022-02-17 15:00:31.579 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:31.589 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:31.605 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:31.606 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:31.650 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:31.650 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:31.650 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.650 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.650 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.651 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:31.653 TRACE 27873 --- [main] c.p.a.controllers.HomeController         : Create Authentication Token Request
+2022-02-17 15:00:31.654 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:31.654 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:31.657 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:31.658 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:31.768 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:31.784 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:31.784 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:31.809 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:31.816 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.817 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:31.817 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:31.817 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:31.817 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:31.817 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9808727553
+2022-02-17 15:00:31.827 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:31.834 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:31.835 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:31.835 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:31.864 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /create-wallet/{mobile}
+2022-02-17 15:00:31.865 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : pathVariable mobile:9808727553
+2022-02-17 15:00:31.888 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : createWallet() 
+2022-02-17 15:00:31.904 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.mobile=?
+2022-02-17 15:00:31.930 DEBUG 27873 --- [main] org.hibernate.SQL                        : select next_val as id_val from hibernate_sequence for update
+2022-02-17 15:00:31.932 DEBUG 27873 --- [main] org.hibernate.SQL                        : update hibernate_sequence set next_val= ? where next_val=?
+2022-02-17 15:00:31.941  INFO 27873 --- [main] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = -1
+	batch.size = 16384
+	bootstrap.servers = [127.0.0.1:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2022-02-17 15:00:31.986  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 15:00:31.987  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 15:00:31.987  INFO 27873 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645090231986
+2022-02-17 15:00:32.001  INFO 27873 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 15:00:32.021 DEBUG 27873 --- [main] org.hibernate.SQL                        : insert into user_wallet (create_time, update_time, balance_amount, is_active, id) values (?, ?, ?, ?, ?)
+2022-02-17 15:00:32.027 DEBUG 27873 --- [main] org.hibernate.SQL                        : update user set create_time=?, update_time=?, address1=?, address2=?, email=?, first_name=?, is_active=?, last_name=?, mobile=?, password=?, roles=?, user_name=?, wallet_id=? where id=?
+2022-02-17 15:00:32.032 DEBUG 27873 --- [main] org.hibernate.SQL                        : update user_wallet set create_time=?, update_time=?, balance_amount=?, is_active=? where id=?
+2022-02-17 15:00:32.110 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.111 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:32.111 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.111 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:32.131 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.135 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.135 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.137 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.165 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.166 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.166 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9027822400
+2022-02-17 15:00:32.166 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.166 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9027822400
+2022-02-17 15:00:32.166 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9027822400
+2022-02-17 15:00:32.168 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.180 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : sending error 403
+2022-02-17 15:00:32.214 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.216 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.222 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.223 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.228 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.228 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.228 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/8630018154
+2022-02-17 15:00:32.228 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.228 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/8630018154
+2022-02-17 15:00:32.228 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 8630018154
+2022-02-17 15:00:32.229 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.231 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : sending error 403
+2022-02-17 15:00:32.240 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.241 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= askalad1
+2022-02-17 15:00:32.241 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.242 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.248 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.250 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.250 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9027822400
+2022-02-17 15:00:32.250 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.250 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9027822400
+2022-02-17 15:00:32.250 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9027822400
+2022-02-17 15:00:32.250 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.253 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.254 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.254 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9027822400
+2022-02-17 15:00:32.259 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /wallet/{mobile} getWallet()
+2022-02-17 15:00:32.259 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : pathVariable mobile:9027822400
+2022-02-17 15:00:32.260 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : getWallet() 
+2022-02-17 15:00:32.270 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_, userwallet0_.create_time as create_t2_2_, userwallet0_.update_time as update_t3_2_, userwallet0_.balance_amount as balance_4_2_, userwallet0_.is_active as is_activ5_2_ from user_wallet userwallet0_ inner join user user1_ on userwallet0_.id=user1_.wallet_id where user1_.mobile=?
+2022-02-17 15:00:32.274  WARN 27873 --- [main] c.p.a.e.WalletNotFoundException          : 9027822400
+2022-02-17 15:00:32.290 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.291 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.291 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.292 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.300 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.300 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.300 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.300 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.300 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.300 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9808727553
+2022-02-17 15:00:32.301 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.302 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.302 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.302 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.303 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /wallet/{mobile} getWallet()
+2022-02-17 15:00:32.303 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : pathVariable mobile:9808727553
+2022-02-17 15:00:32.304 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : getWallet() 
+2022-02-17 15:00:32.305 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_, userwallet0_.create_time as create_t2_2_, userwallet0_.update_time as update_t3_2_, userwallet0_.balance_amount as balance_4_2_, userwallet0_.is_active as is_activ5_2_ from user_wallet userwallet0_ inner join user user1_ on userwallet0_.id=user1_.wallet_id where user1_.mobile=?
+2022-02-17 15:00:32.312 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_0_, user0_.create_time as create_t2_1_0_, user0_.update_time as update_t3_1_0_, user0_.address1 as address4_1_0_, user0_.address2 as address5_1_0_, user0_.email as email6_1_0_, user0_.first_name as first_na7_1_0_, user0_.is_active as is_activ8_1_0_, user0_.last_name as last_nam9_1_0_, user0_.mobile as mobile10_1_0_, user0_.password as passwor11_1_0_, user0_.roles as roles12_1_0_, user0_.user_name as user_na13_1_0_, user0_.wallet_id as wallet_14_1_0_ from user user0_ where user0_.wallet_id=?
+2022-02-17 15:00:32.350 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.352 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.352 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.353 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.356 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.356 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.356 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:32.356 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.356 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:32.356 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9808727553
+2022-02-17 15:00:32.357 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.359 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.361 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.361 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /create-wallet/9808727553
+2022-02-17 15:00:32.362 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /create-wallet/{mobile}
+2022-02-17 15:00:32.362 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : pathVariable mobile:9808727553
+2022-02-17 15:00:32.363 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : createWallet() 
+2022-02-17 15:00:32.363 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.mobile=?
+2022-02-17 15:00:32.366  WARN 27873 --- [main] c.p.a.e.WalletAlreadyPresentException    : 9808727553
+2022-02-17 15:00:32.374 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.378 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.378 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.379 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.384 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.384 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.384 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9027822400
+2022-02-17 15:00:32.384 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.384 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9027822400
+2022-02-17 15:00:32.384 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9027822400
+2022-02-17 15:00:32.384 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.386 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : sending error 403
+2022-02-17 15:00:32.393 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.394 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.394 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.394 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.400 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.401 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.401 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/8630018154
+2022-02-17 15:00:32.401 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.401 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/8630018154
+2022-02-17 15:00:32.401 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 8630018154
+2022-02-17 15:00:32.402 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.406 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : sending error 403
+2022-02-17 15:00:32.414 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.416 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.416 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.417 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.421 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.422 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.422 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.422 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.422 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.422 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9808727553
+2022-02-17 15:00:32.422 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.424 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.424 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.425 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /wallet/9808727553
+2022-02-17 15:00:32.426 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /wallet/{mobile} getWallet()
+2022-02-17 15:00:32.427 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : pathVariable mobile:9808727553
+2022-02-17 15:00:32.428 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : getWallet() 
+2022-02-17 15:00:32.428 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_, userwallet0_.create_time as create_t2_2_, userwallet0_.update_time as update_t3_2_, userwallet0_.balance_amount as balance_4_2_, userwallet0_.is_active as is_activ5_2_ from user_wallet userwallet0_ inner join user user1_ on userwallet0_.id=user1_.wallet_id where user1_.mobile=?
+2022-02-17 15:00:32.430 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_0_, user0_.create_time as create_t2_1_0_, user0_.update_time as update_t3_1_0_, user0_.address1 as address4_1_0_, user0_.address2 as address5_1_0_, user0_.email as email6_1_0_, user0_.first_name as first_na7_1_0_, user0_.is_active as is_activ8_1_0_, user0_.last_name as last_nam9_1_0_, user0_.mobile as mobile10_1_0_, user0_.password as passwor11_1_0_, user0_.roles as roles12_1_0_, user0_.user_name as user_na13_1_0_, user0_.wallet_id as wallet_14_1_0_ from user user0_ where user0_.wallet_id=?
+2022-02-17 15:00:32.436 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.437 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= thorfinn1
+2022-02-17 15:00:32.437 TRACE 27873 --- [main] c.p.a.services.MyUserDetailsService      : loadUserByUsername()
+2022-02-17 15:00:32.438 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_ where user0_.user_name=?
+2022-02-17 15:00:32.443 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.443 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.443 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /add-balance
+2022-02-17 15:00:32.443 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter : doFilter()
+2022-02-17 15:00:32.443 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /add-balance
+2022-02-17 15:00:32.443 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : userMobile: 9808727553
+2022-02-17 15:00:32.443 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as col_0_0_ from user user0_ where user0_.user_name=? and user0_.mobile=? limit ?
+2022-02-17 15:00:32.446 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.447 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Roles : [ROLE_USER]
+2022-02-17 15:00:32.447 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : request URI: /add-balance
+2022-02-17 15:00:32.459 TRACE 27873 --- [main] c.p.a.controllers.WalletController       : /add-balance
+2022-02-17 15:00:32.460 DEBUG 27873 --- [main] c.p.a.controllers.WalletController       : RequestParams mobile:9808727553 amount:500.0
+2022-02-17 15:00:32.461 TRACE 27873 --- [main] c.p.assignment1.services.WalletService   : addBalance() 
+2022-02-17 15:00:32.461 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_, userwallet0_.create_time as create_t2_2_, userwallet0_.update_time as update_t3_2_, userwallet0_.balance_amount as balance_4_2_, userwallet0_.is_active as is_activ5_2_ from user_wallet userwallet0_ inner join user user1_ on userwallet0_.id=user1_.wallet_id where user1_.mobile=?
+2022-02-17 15:00:32.463 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_0_, user0_.create_time as create_t2_1_0_, user0_.update_time as update_t3_1_0_, user0_.address1 as address4_1_0_, user0_.address2 as address5_1_0_, user0_.email as email6_1_0_, user0_.first_name as first_na7_1_0_, user0_.is_active as is_activ8_1_0_, user0_.last_name as last_nam9_1_0_, user0_.mobile as mobile10_1_0_, user0_.password as passwor11_1_0_, user0_.roles as roles12_1_0_, user0_.user_name as user_na13_1_0_, user0_.wallet_id as wallet_14_1_0_ from user user0_ where user0_.wallet_id=?
+2022-02-17 15:00:32.482 DEBUG 27873 --- [main] org.hibernate.SQL                        : update user_wallet set create_time=?, update_time=?, balance_amount=?, is_active=? where id=?
+2022-02-17 15:00:32.500 TRACE 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authentication Filter
+2022-02-17 15:00:32.500 DEBUG 27873 --- [main] c.p.a.filters.JwtRequestFilter           : Authenticating user with username= null
+2022-02-17 15:00:32.500 TRACE 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : Authorization Filter: shouldNotFilter()
+2022-02-17 15:00:32.500 DEBUG 27873 --- [main] c.p.a.filters.UserAuthorizationFilter    : no authentication or anonymous user
+2022-02-17 15:00:32.526 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_, userwallet0_.create_time as create_t2_2_, userwallet0_.update_time as update_t3_2_, userwallet0_.balance_amount as balance_4_2_, userwallet0_.is_active as is_activ5_2_ from user_wallet userwallet0_
+2022-02-17 15:00:32.529 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_0_, user0_.create_time as create_t2_1_0_, user0_.update_time as update_t3_1_0_, user0_.address1 as address4_1_0_, user0_.address2 as address5_1_0_, user0_.email as email6_1_0_, user0_.first_name as first_na7_1_0_, user0_.is_active as is_activ8_1_0_, user0_.last_name as last_nam9_1_0_, user0_.mobile as mobile10_1_0_, user0_.password as passwor11_1_0_, user0_.roles as roles12_1_0_, user0_.user_name as user_na13_1_0_, user0_.wallet_id as wallet_14_1_0_ from user user0_ where user0_.wallet_id=?
+2022-02-17 15:00:32.540 DEBUG 27873 --- [main] org.hibernate.SQL                        : select user0_.id as id1_1_, user0_.create_time as create_t2_1_, user0_.update_time as update_t3_1_, user0_.address1 as address4_1_, user0_.address2 as address5_1_, user0_.email as email6_1_, user0_.first_name as first_na7_1_, user0_.is_active as is_activ8_1_, user0_.last_name as last_nam9_1_, user0_.mobile as mobile10_1_, user0_.password as passwor11_1_, user0_.roles as roles12_1_, user0_.user_name as user_na13_1_, user0_.wallet_id as wallet_14_1_ from user user0_
+2022-02-17 15:00:32.543 DEBUG 27873 --- [main] org.hibernate.SQL                        : select userwallet0_.id as id1_2_0_, userwallet0_.create_time as create_t2_2_0_, userwallet0_.update_time as update_t3_2_0_, userwallet0_.balance_amount as balance_4_2_0_, userwallet0_.is_active as is_activ5_2_0_ from user_wallet userwallet0_ where userwallet0_.id=?
+2022-02-17 15:00:32.550 DEBUG 27873 --- [main] org.hibernate.SQL                        : delete from user where id=?
+2022-02-17 15:00:32.556 DEBUG 27873 --- [main] org.hibernate.SQL                        : delete from user_wallet where id=?
+2022-02-17 15:00:32.558 DEBUG 27873 --- [main] org.hibernate.SQL                        : delete from user where id=?
+2022-02-17 15:00:32.590  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Member consumer-user-wallet-group-2-46121272-42f0-496e-9003-bb6e35f53cb0 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 15:00:32.590  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Member consumer-user-wallet-group-1-9bd30caf-343b-4819-8bac-2a835af8ee56 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.593  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 15:00:32.595  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.595  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.595  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 15:00:32.595  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 15:00:33.191  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 15:00:33.191  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 15:00:33.195  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 15:00:33.195  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 15:00:33.197  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 15:00:33.197  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 15:00:33.204  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-2 unregistered
+2022-02-17 15:00:33.205  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-1 unregistered
+2022-02-17 15:00:33.216  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 15:00:33.216  INFO 27873 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 15:00:33.232  INFO 27873 --- [SpringApplicationShutdownHook] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 30000 ms.
+2022-02-17 15:00:33.243  INFO 27873 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 15:00:33.243  INFO 27873 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 15:00:33.243  INFO 27873 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 15:00:33.244  INFO 27873 --- [SpringApplicationShutdownHook] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for producer-1 unregistered
+2022-02-17 15:00:33.250  INFO 27873 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 15:00:33.257  INFO 27873 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-17 15:00:33.276  INFO 27873 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
