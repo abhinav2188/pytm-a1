@@ -3,10 +3,11 @@ package com.paytm.assignment1.exceptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserNotFoundException extends RuntimeException{
+public class WalletAlreadyPresentException extends RuntimeException{
     Logger logger = LoggerFactory.getLogger(this.getClass());
-    public UserNotFoundException(Object id){
-        super("User not Found with id "+id);
+
+    public WalletAlreadyPresentException(Object id){
+        super("wallet already present with id: "+id);
         logger.warn(String.valueOf(id));
     }
 }
