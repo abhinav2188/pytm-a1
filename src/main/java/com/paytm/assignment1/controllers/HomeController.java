@@ -52,7 +52,7 @@ public class HomeController {
     @PostMapping("/authenticate")
     public @ResponseBody
     BaseResponseDto createAuthenticationToken(@RequestBody AuthenticateRequestDto requestDto){
-        logger.trace("Authentication Token Request");
+        logger.trace("Create Authentication Token Request");
         try{
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(requestDto.getUserName(),requestDto.getPassword())

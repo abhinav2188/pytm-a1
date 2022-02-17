@@ -39,6 +39,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class UserControllerIT {
 
+    // for USER_ROLE
+
     @LocalServerPort
     private int port;
 
@@ -287,9 +289,8 @@ public class UserControllerIT {
 
         mockMvc.perform(mockRequest)
                 .andDo(print())
-                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
-                .andExpect(jsonPath("$.errorMsg", is("User not Found with id 3")))
-                .andExpect(jsonPath("$.data", blankOrNullString()));
+                .andExpect(status().isForbidden());
+
     }
 
     @Test
@@ -356,8 +357,7 @@ public class UserControllerIT {
 
         mockMvc.perform(mockRequest)
                 .andDo(print())
-                .andExpect(jsonPath("$.status",is("NOT_FOUND")))
-                .andExpect(jsonPath("$.errorMsg",is("User not Found with id "+3)));
+                .andExpect(status().isForbidden());
 
     }
 

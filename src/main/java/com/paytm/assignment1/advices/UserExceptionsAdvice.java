@@ -3,6 +3,7 @@ package com.paytm.assignment1.advices;
 import com.paytm.assignment1.dto.BaseResponseDto;
 import com.paytm.assignment1.exceptions.DuplicateFieldException;
 import com.paytm.assignment1.exceptions.EmptyFieldException;
+import com.paytm.assignment1.exceptions.UserAuthorizationException;
 import com.paytm.assignment1.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,6 +29,15 @@ public class UserExceptionsAdvice {
         return BaseResponseDto.builder()
                 .status(HttpStatus.NOT_FOUND)
                 .errorMsg(ex.getMessage()).build();
+    }
+
+    @ExceptionHandler({UserAuthorizationException.class})
+    @ResponseBody
+    BaseResponseDto userAuthorizationExceptionHandler(RuntimeException ex){
+        return BaseResponseDto.builder()
+                .status(HttpStatus.FORBIDDEN)
+                .errorMsg(ex.getMessage())
+                .build();
     }
 
 }

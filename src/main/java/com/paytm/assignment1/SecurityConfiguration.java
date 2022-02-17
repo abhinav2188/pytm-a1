@@ -53,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-//        http.addFilterAfter(userAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAfter(userAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
