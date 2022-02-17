@@ -11,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,10 +30,12 @@ public class TransactionController {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping
-    public BaseResponseDto addTransaction(@RequestBody AddTransactionRequestDto requestDto){
-        logger.trace("/transaction addTransaction()", requestDto);
-        Transaction transaction = transactionService.addTransaction(requestDto.getPayerMobile(), requestDto.getPayeeMobile(), requestDto.getAmount());
+
+    @PostMapping("/{mobile}")
+    public BaseResponseDto addTransaction(@RequestBody AddTransactionRequestDto requestDto, @PathVariable String mobile){
+        logger.trace("/transaction/{mobile} addTransaction()", requestDto);
+
+        Transaction transaction = transactionService.addTransaction(mobile, requestDto.getPayeeMobile(), requestDto.getAmount());
         return BaseResponseDto.builder()
                 .status(HttpStatus.CREATED)
                 .data(transaction)
@@ -40,7 +44,7 @@ public class TransactionController {
     }
 
     @GetMapping("/{mobile}")
-    public BaseResponseDto getTransactions(@PathVariable String mobile, @RequestParam int pageNo){
+    public BaseResponseDto getTransaction(@PathVariable String mobile, @RequestParam int pageNo){
         logger.trace("/transaction/{mobile} getTransactions()");
         UserWallet wallet = walletService.getWallet(mobile);
         List<Transaction> userTransactions = transactionService.getTransactions(wallet.getId(),pageNo);

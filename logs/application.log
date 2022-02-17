@@ -5776,3 +5776,790 @@ org.apache.kafka.common.errors.DisconnectException: null
 2022-02-17 16:26:34.702  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
 2022-02-17 16:26:34.702  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
 2022-02-17 16:26:55.976  WARN 26617 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m46s874ms).
+2022-02-17 17:19:08.494  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Revoke previously assigned partitions transactions-0
+2022-02-17 17:19:08.494  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Revoke previously assigned partitions create-wallet-0
+2022-02-17 17:19:08.502  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [create-wallet-0]
+2022-02-17 17:19:08.502  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [transactions-0]
+2022-02-17 17:19:08.508  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Member consumer-user-wallet-group-1-c2b313c6-d496-41cc-9e6b-1025dbae1414 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:19:08.508  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Member consumer-user-wallet-group-2-97f49223-fa10-4a54-b2ab-787b97bc9ba1 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.511  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:19:08.512  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.512  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-1, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.512  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.514  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-2, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:19:08.617  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:19:08.620  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:19:08.621  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:19:08.630  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-2 unregistered
+2022-02-17 17:19:08.646  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:19:08.646  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:19:08.646  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:19:08.647  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:19:08.656  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-1 unregistered
+2022-02-17 17:19:08.656  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:19:08.669  INFO 26617 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:19:08.688  INFO 26617 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-02-17 17:19:08.701  INFO 26617 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-02-17 17:19:09.392  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Starting Assignment1Application using Java 1.8.0_231 on PPBNOMBPBT-212.local with PID 26617 (/Users/abhinav.rastogi/IdeaProjects/pytm-a1/target/classes started by abhinav.rastogi in /Users/abhinav.rastogi/IdeaProjects/pytm-a1)
+2022-02-17 17:19:09.399 DEBUG 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Running with Spring Boot v2.6.2, Spring v5.3.14
+2022-02-17 17:19:09.401  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : No active profile set, falling back to default profiles: default
+2022-02-17 17:19:10.286  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 17:19:10.358  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 3 JPA repository interfaces.
+2022-02-17 17:19:11.148  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-17 17:19:11.162  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 17:19:11.163  INFO 26617 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-17 17:19:11.202  INFO 26617 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-17 17:19:11.203  INFO 26617 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1772 ms
+2022-02-17 17:19:11.447  INFO 26617 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 17:19:11.467  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-02-17 17:19:11.561  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-02-17 17:19:11.563  INFO 26617 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 17:19:12.001  INFO 26617 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 17:19:12.002  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:19:12.293 DEBUG 26617 --- [restartedMain] c.p.a.filters.JwtRequestFilter           : Filter 'jwtRequestFilter' configured for use
+2022-02-17 17:19:12.364  WARN 26617 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 17:19:12.392  WARN 26617 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfiguration': Unsatisfied dependency expressed through field 'userAuthorizationFilter'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-02-17 17:19:12.393  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:19:12.394  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-02-17 17:19:12.414  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-02-17 17:19:12.418  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-02-17 17:19:12.470  INFO 26617 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-02-17 17:19:12.535 ERROR 26617 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userAuthorizationFilter in com.paytm.assignment1.SecurityConfiguration required a bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' in your configuration.
+
+2022-02-17 17:19:14.142  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Starting Assignment1Application using Java 1.8.0_231 on PPBNOMBPBT-212.local with PID 26617 (/Users/abhinav.rastogi/IdeaProjects/pytm-a1/target/classes started by abhinav.rastogi in /Users/abhinav.rastogi/IdeaProjects/pytm-a1)
+2022-02-17 17:19:14.145 DEBUG 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Running with Spring Boot v2.6.2, Spring v5.3.14
+2022-02-17 17:19:14.145  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : No active profile set, falling back to default profiles: default
+2022-02-17 17:19:14.570  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 17:19:14.625  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2022-02-17 17:19:15.205  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-17 17:19:15.221  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 17:19:15.221  INFO 26617 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-17 17:19:15.269  INFO 26617 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-02-17 17:19:15.271  INFO 26617 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1110 ms
+2022-02-17 17:19:15.473  INFO 26617 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 17:19:15.484  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-02-17 17:19:15.538  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-02-17 17:19:15.539  INFO 26617 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 17:19:15.886  INFO 26617 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 17:19:15.888  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:19:16.068 DEBUG 26617 --- [restartedMain] c.p.a.filters.UserAuthorizationFilter    : Filter 'userAuthorizationFilter' configured for use
+2022-02-17 17:19:16.069 DEBUG 26617 --- [restartedMain] c.p.a.filters.JwtRequestFilter           : Filter 'jwtRequestFilter' configured for use
+2022-02-17 17:19:16.104  WARN 26617 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 17:19:16.420  INFO 26617 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c135232, org.springframework.security.web.context.SecurityContextPersistenceFilter@92caff1, org.springframework.security.web.header.HeaderWriterFilter@532ad09d, org.springframework.security.web.authentication.logout.LogoutFilter@1facdadf, com.paytm.assignment1.filters.JwtRequestFilter@1679d301, com.paytm.assignment1.filters.UserAuthorizationFilter@467dcbcf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44816a19, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41aae42c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@561cba43, org.springframework.security.web.session.SessionManagementFilter@1767fb5, org.springframework.security.web.access.ExceptionTranslationFilter@5203ec69, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@914e3fc]
+2022-02-17 17:19:16.742  INFO 26617 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-17 17:19:16.766  INFO 26617 --- [restartedMain] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [127.0.0.1:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2022-02-17 17:19:16.781  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:19:16.783  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:19:16.783  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098556781
+2022-02-17 17:19:16.844  INFO 26617 --- [kafka-admin-client-thread | adminclient-2] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-2 unregistered
+2022-02-17 17:19:16.851  INFO 26617 --- [kafka-admin-client-thread | adminclient-2] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:19:16.852  INFO 26617 --- [kafka-admin-client-thread | adminclient-2] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:19:16.852  INFO 26617 --- [kafka-admin-client-thread | adminclient-2] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:19:16.857  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-3
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 17:19:16.864  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:19:16.864  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:19:16.864  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098556863
+2022-02-17 17:19:16.870  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Subscribed to topic(s): transactions
+2022-02-17 17:19:16.888  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-4
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 17:19:16.903  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:19:16.903  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:19:16.903  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098556903
+2022-02-17 17:19:16.904  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Subscribed to topic(s): create-wallet
+2022-02-17 17:19:16.917  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-17 17:19:16.925  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 17:19:16.928  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 17:19:16.933  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 17:19:16.934  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 17:19:16.937  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:16.940  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:16.966  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Started Assignment1Application in 2.972 seconds (JVM running for 4918.324)
+2022-02-17 17:19:16.982  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 17:19:16.982  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 17:19:16.992  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:16.992  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:17.009  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=88, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:17.010  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=88, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:17.020  INFO 26617 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-02-17 17:19:17.029  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Finished assignment for group at generation 88: {consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52=Assignment(partitions=[transactions-0])}
+2022-02-17 17:19:17.041  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=88, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:17.041  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=88, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:17.044  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[create-wallet-0])
+2022-02-17 17:19:17.045  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[transactions-0])
+2022-02-17 17:19:17.047  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Adding newly assigned partitions: transactions-0
+2022-02-17 17:19:17.047  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Adding newly assigned partitions: create-wallet-0
+2022-02-17 17:19:17.058  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Setting offset for partition transactions-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:19:17.058  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Setting offset for partition create-wallet-0 to the committed offset FetchPosition{offset=5, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:19:17.059  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [transactions-0]
+2022-02-17 17:19:17.059  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [create-wallet-0]
+2022-02-17 17:19:30.334 DEBUG 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] c.p.assignment1.services.WalletService   : Received kafka event for create-wallet : new wallet created with mobile 9808727553
+2022-02-17 17:19:30.521 DEBUG 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] c.p.assignment1.services.WalletService   : Received kafka event for create-wallet : new wallet created with mobile 9027822400
+2022-02-17 17:19:32.036  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Request joining group due to: group is already rebalancing
+2022-02-17 17:19:32.036  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Request joining group due to: group is already rebalancing
+2022-02-17 17:19:32.039  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Revoke previously assigned partitions transactions-0
+2022-02-17 17:19:32.039  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Revoke previously assigned partitions create-wallet-0
+2022-02-17 17:19:32.040  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [transactions-0]
+2022-02-17 17:19:32.040  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [create-wallet-0]
+2022-02-17 17:19:32.042  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:32.042  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:32.081  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=89, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:32.085  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=89, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:32.087  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=89, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:32.088  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:32.545  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Finished assignment for group at generation 89: {consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33=Assignment(partitions=[]), consumer-user-wallet-group-2-ff38945e-960f-4dcb-bf5d-fd654ad1455e=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-1-c44c0bc7-de87-4533-90cd-8a78c9e49bc3=Assignment(partitions=[transactions-0]), consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52=Assignment(partitions=[])}
+2022-02-17 17:19:32.549  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=89, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:32.549  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:19:32.553  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=90, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:32.553  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=90, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:32.561  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Finished assignment for group at generation 90: {consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52=Assignment(partitions=[transactions-0])}
+2022-02-17 17:19:32.565  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=90, memberId='consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52', protocol='range'}
+2022-02-17 17:19:32.566  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=90, memberId='consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33', protocol='range'}
+2022-02-17 17:19:32.571  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[transactions-0])
+2022-02-17 17:19:32.571  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[create-wallet-0])
+2022-02-17 17:19:32.572  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Adding newly assigned partitions: transactions-0
+2022-02-17 17:19:32.572  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Adding newly assigned partitions: create-wallet-0
+2022-02-17 17:19:32.583  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Setting offset for partition create-wallet-0 to the committed offset FetchPosition{offset=7, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:19:32.583  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Setting offset for partition transactions-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:19:32.584  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [create-wallet-0]
+2022-02-17 17:19:32.584  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [transactions-0]
+2022-02-17 17:22:35.576  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Revoke previously assigned partitions transactions-0
+2022-02-17 17:22:35.576  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Revoke previously assigned partitions create-wallet-0
+2022-02-17 17:22:35.589  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [transactions-0]
+2022-02-17 17:22:35.589  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [create-wallet-0]
+2022-02-17 17:22:35.590  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Member consumer-user-wallet-group-4-926dbedb-b44f-4edb-bfe6-350a5689ba33 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:22:35.590  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Member consumer-user-wallet-group-3-1b86bc5f-8899-493f-873f-e4d19e7b2e52 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.592  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:22:35.594  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.603  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-4, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.598  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.603  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-3, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:22:35.610  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:22:35.615  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-4 unregistered
+2022-02-17 17:22:35.616  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:22:35.617  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-3 unregistered
+2022-02-17 17:22:35.618  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:22:35.629  INFO 26617 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:22:35.637  INFO 26617 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-02-17 17:22:35.662  INFO 26617 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-02-17 17:22:36.408  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Starting Assignment1Application using Java 1.8.0_231 on PPBNOMBPBT-212.local with PID 26617 (/Users/abhinav.rastogi/IdeaProjects/pytm-a1/target/classes started by abhinav.rastogi in /Users/abhinav.rastogi/IdeaProjects/pytm-a1)
+2022-02-17 17:22:36.420 DEBUG 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Running with Spring Boot v2.6.2, Spring v5.3.14
+2022-02-17 17:22:36.422  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : No active profile set, falling back to default profiles: default
+2022-02-17 17:22:36.990  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 17:22:37.040  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
+2022-02-17 17:22:37.405  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-17 17:22:37.413  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 17:22:37.414  INFO 26617 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-17 17:22:37.431  INFO 26617 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-02-17 17:22:37.434  INFO 26617 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 955 ms
+2022-02-17 17:22:37.552  INFO 26617 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 17:22:37.560  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-02-17 17:22:37.636  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-02-17 17:22:37.637  INFO 26617 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 17:22:38.022  INFO 26617 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 17:22:38.023  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:22:38.205 DEBUG 26617 --- [restartedMain] c.p.a.filters.JwtRequestFilter           : Filter 'jwtRequestFilter' configured for use
+2022-02-17 17:22:38.246  WARN 26617 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 17:22:38.251  WARN 26617 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfiguration': Unsatisfied dependency expressed through field 'userAuthorizationFilter'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-02-17 17:22:38.252  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:22:38.253  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-02-17 17:22:38.275  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-02-17 17:22:38.280  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-02-17 17:22:38.302  INFO 26617 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-02-17 17:22:38.316 ERROR 26617 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field userAuthorizationFilter in com.paytm.assignment1.SecurityConfiguration required a bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.paytm.assignment1.filters.UserAuthorizationFilter' in your configuration.
+
+2022-02-17 17:22:39.991  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Starting Assignment1Application using Java 1.8.0_231 on PPBNOMBPBT-212.local with PID 26617 (/Users/abhinav.rastogi/IdeaProjects/pytm-a1/target/classes started by abhinav.rastogi in /Users/abhinav.rastogi/IdeaProjects/pytm-a1)
+2022-02-17 17:22:39.996 DEBUG 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Running with Spring Boot v2.6.2, Spring v5.3.14
+2022-02-17 17:22:39.998  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : No active profile set, falling back to default profiles: default
+2022-02-17 17:22:40.587  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-17 17:22:40.631  INFO 26617 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 3 JPA repository interfaces.
+2022-02-17 17:22:40.887  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-17 17:22:40.892  INFO 26617 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-17 17:22:40.892  INFO 26617 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-17 17:22:40.907  INFO 26617 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-02-17 17:22:40.907  INFO 26617 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 875 ms
+2022-02-17 17:22:41.050  INFO 26617 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-17 17:22:41.069  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-02-17 17:22:41.132  INFO 26617 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2022-02-17 17:22:41.133  INFO 26617 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-17 17:22:41.455  INFO 26617 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-17 17:22:41.455  INFO 26617 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:22:41.607 DEBUG 26617 --- [restartedMain] c.p.a.filters.UserAuthorizationFilter    : Filter 'userAuthorizationFilter' configured for use
+2022-02-17 17:22:41.607 DEBUG 26617 --- [restartedMain] c.p.a.filters.JwtRequestFilter           : Filter 'jwtRequestFilter' configured for use
+2022-02-17 17:22:41.649  WARN 26617 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-17 17:22:41.845  INFO 26617 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2cdd1918, org.springframework.security.web.context.SecurityContextPersistenceFilter@4eec7329, org.springframework.security.web.header.HeaderWriterFilter@68f2d672, org.springframework.security.web.authentication.logout.LogoutFilter@66f6e67d, com.paytm.assignment1.filters.JwtRequestFilter@57855acf, com.paytm.assignment1.filters.UserAuthorizationFilter@59392b18, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16d11e1a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@68ee1bf4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6180b1e3, org.springframework.security.web.session.SessionManagementFilter@1406fcb7, org.springframework.security.web.access.ExceptionTranslationFilter@baa79ef, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@430169c9]
+2022-02-17 17:22:41.995  INFO 26617 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-02-17 17:22:42.020  INFO 26617 --- [restartedMain] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [127.0.0.1:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2022-02-17 17:22:42.030  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:22:42.030  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:22:42.030  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098762030
+2022-02-17 17:22:42.086  INFO 26617 --- [kafka-admin-client-thread | adminclient-3] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-3 unregistered
+2022-02-17 17:22:42.093  INFO 26617 --- [kafka-admin-client-thread | adminclient-3] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:22:42.094  INFO 26617 --- [kafka-admin-client-thread | adminclient-3] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:22:42.094  INFO 26617 --- [kafka-admin-client-thread | adminclient-3] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:22:42.102  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-5
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 17:22:42.110  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:22:42.111  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:22:42.111  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098762110
+2022-02-17 17:22:42.112  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Subscribed to topic(s): transactions
+2022-02-17 17:22:42.118  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [127.0.0.1:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-user-wallet-group-6
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = user-wallet-group
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2022-02-17 17:22:42.129  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.0.0
+2022-02-17 17:22:42.129  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: 8cb0a5e9d3441962
+2022-02-17 17:22:42.129  INFO 26617 --- [restartedMain] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1645098762129
+2022-02-17 17:22:42.129  INFO 26617 --- [restartedMain] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Subscribed to topic(s): create-wallet
+2022-02-17 17:22:42.137  INFO 26617 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-17 17:22:42.143  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 17:22:42.144  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Cluster ID: VnhOLETeQSivApDCWoJhFQ
+2022-02-17 17:22:42.145  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 17:22:42.145  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null)
+2022-02-17 17:22:42.148  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:42.148  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:42.154  INFO 26617 --- [restartedMain] c.p.assignment1.Assignment1Application   : Started Assignment1Application in 2.353 seconds (JVM running for 5123.52)
+2022-02-17 17:22:42.163  INFO 26617 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-02-17 17:22:42.173  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 17:22:42.173  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Request joining group due to: need to re-join with the given member-id
+2022-02-17 17:22:42.174  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:42.175  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:42.181  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=92, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:42.181  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=92, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:42.198  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Finished assignment for group at generation 92: {consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378=Assignment(partitions=[transactions-0])}
+2022-02-17 17:22:42.203  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=92, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:42.203  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=92, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:42.204  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[transactions-0])
+2022-02-17 17:22:42.205  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Adding newly assigned partitions: transactions-0
+2022-02-17 17:22:42.205  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[create-wallet-0])
+2022-02-17 17:22:42.205  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Adding newly assigned partitions: create-wallet-0
+2022-02-17 17:22:42.217  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Setting offset for partition create-wallet-0 to the committed offset FetchPosition{offset=7, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:22:42.216  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Setting offset for partition transactions-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:22:42.218  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [create-wallet-0]
+2022-02-17 17:22:42.218  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [transactions-0]
+2022-02-17 17:22:53.308 DEBUG 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] c.p.assignment1.services.WalletService   : Received kafka event for create-wallet : new wallet created with mobile 9808727553
+2022-02-17 17:22:53.510 DEBUG 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] c.p.assignment1.services.WalletService   : Received kafka event for create-wallet : new wallet created with mobile 9027822400
+2022-02-17 17:22:54.200  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Request joining group due to: group is already rebalancing
+2022-02-17 17:22:54.200  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Request joining group due to: group is already rebalancing
+2022-02-17 17:22:54.201  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Revoke previously assigned partitions transactions-0
+2022-02-17 17:22:54.201  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Revoke previously assigned partitions create-wallet-0
+2022-02-17 17:22:54.201  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [transactions-0]
+2022-02-17 17:22:54.201  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [create-wallet-0]
+2022-02-17 17:22:54.202  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:54.202  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:54.224  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=93, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:54.224  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=93, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:54.227  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=93, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:54.229  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:54.336  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Finished assignment for group at generation 93: {consumer-user-wallet-group-2-6208487e-9a7a-4739-9241-2b047b6ccd07=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-1-33987867-f461-4a81-9cf2-ec6204fab5ef=Assignment(partitions=[transactions-0]), consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a=Assignment(partitions=[]), consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378=Assignment(partitions=[])}
+2022-02-17 17:22:54.339  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] SyncGroup failed: The group began another rebalance. Need to re-join the group. Sent generation was Generation{generationId=93, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:54.339  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] (Re-)joining group
+2022-02-17 17:22:54.341  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=94, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:54.342  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Successfully joined group with generation Generation{generationId=94, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:54.345  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Finished assignment for group at generation 94: {consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a=Assignment(partitions=[create-wallet-0]), consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378=Assignment(partitions=[transactions-0])}
+2022-02-17 17:22:54.347  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=94, memberId='consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378', protocol='range'}
+2022-02-17 17:22:54.347  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Successfully synced group in generation Generation{generationId=94, memberId='consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a', protocol='range'}
+2022-02-17 17:22:54.348  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[transactions-0])
+2022-02-17 17:22:54.348  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Notifying assignor about the new Assignment(partitions=[create-wallet-0])
+2022-02-17 17:22:54.348  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Adding newly assigned partitions: transactions-0
+2022-02-17 17:22:54.348  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Adding newly assigned partitions: create-wallet-0
+2022-02-17 17:22:54.354  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Setting offset for partition transactions-0 to the committed offset FetchPosition{offset=0, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:22:54.355  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Setting offset for partition create-wallet-0 to the committed offset FetchPosition{offset=9, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 0 rack: null)], epoch=0}}
+2022-02-17 17:22:54.355  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [create-wallet-0]
+2022-02-17 17:22:54.355  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions assigned: [transactions-0]
+2022-02-17 17:25:18.003  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Revoke previously assigned partitions create-wallet-0
+2022-02-17 17:25:18.004  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Revoke previously assigned partitions transactions-0
+2022-02-17 17:25:18.007  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [transactions-0]
+2022-02-17 17:25:18.007  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: partitions revoked: [create-wallet-0]
+2022-02-17 17:25:18.008  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Member consumer-user-wallet-group-5-58afd019-fcea-4d28-abac-cd454d069378 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:25:18.008  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Member consumer-user-wallet-group-6-18aa49f3-0ed2-40d7-9ec9-26fe296d4b9a sending LeaveGroup request to coordinator localhost:9092 (id: 2147483647 rack: null) due to the consumer unsubscribed from all topics
+2022-02-17 17:25:18.009  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.009  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.009  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:25:18.009  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.010  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.010  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Unsubscribed all topics or patterns and assigned partitions
+2022-02-17 17:25:18.010  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.013  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-5, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.013  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Resetting generation due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.013  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-user-wallet-group-6, groupId=user-wallet-group] Request joining group due to: consumer pro-actively leaving the group
+2022-02-17 17:25:18.020  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:25:18.020  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:25:18.021  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:25:18.022  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2022-02-17 17:25:18.023  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2022-02-17 17:25:18.023  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2022-02-17 17:25:18.030  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-5 unregistered
+2022-02-17 17:25:18.030  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:25:18.034  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-user-wallet-group-6 unregistered
+2022-02-17 17:25:18.034  INFO 26617 --- [org.springframework.kafka.KafkaListenerEndpointContainer#1-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : user-wallet-group: Consumer stopped
+2022-02-17 17:25:18.039  INFO 26617 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-17 17:25:18.044  INFO 26617 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2022-02-17 17:25:18.070  INFO 26617 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.

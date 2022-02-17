@@ -42,6 +42,7 @@ public class TransactionControllerIT {
     @Autowired
     ObjectMapper objectMapper;
 
+
     //static data to be used by various tests
     private static String jwtAccessTokenUser1;
     private static String jwtAccessTokenUser2;
@@ -140,6 +141,7 @@ public class TransactionControllerIT {
         return bal;
     }
 
+    //-------------------------post /transaction/{mobile}----------------------------//
     @Test
     @Order(1)
     public void transaction_success_SuccessTransaction() throws Exception{
@@ -148,8 +150,8 @@ public class TransactionControllerIT {
         double prevPayeeBal = getBalance(user2.getMobile(),jwtAccessTokenUser2);
         double amount = 500;
 
-        AddTransactionRequestDto dto = new AddTransactionRequestDto(user1.getMobile(),user2.getMobile(),amount);
-        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders.post("/transaction")
+        AddTransactionRequestDto dto = new AddTransactionRequestDto(user2.getMobile(),amount);
+        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders.post("/transaction/"+user1.getMobile())
                     .accept(MediaType.APPLICATION_JSON)
                     .contentType(MediaType.APPLICATION_JSON)
                     .header("Authorization",jwtAccessTokenUser1)
@@ -179,8 +181,8 @@ public class TransactionControllerIT {
         double prevPayeeBal = getBalance(user2.getMobile(),jwtAccessTokenUser2);
         double amount = 2500;
 
-        AddTransactionRequestDto dto = new AddTransactionRequestDto(user1.getMobile(),user2.getMobile(),amount);
-        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders.post("/transaction")
+        AddTransactionRequestDto dto = new AddTransactionRequestDto(user2.getMobile(),amount);
+        MvcResult result1 = mockMvc.perform(MockMvcRequestBuilders.post("/transaction/"+user1.getMobile())
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("Authorization",jwtAccessTokenUser1)
@@ -205,8 +207,8 @@ public class TransactionControllerIT {
     @Order(1)
     public void transaction_failure_PayeeNotFound() throws Exception{
         assertNotNull(jwtAccessTokenUser1);
-        AddTransactionRequestDto dto = new AddTransactionRequestDto(user1.getMobile(),"8630018154",500);
-        mockMvc.perform(MockMvcRequestBuilders.post("/transaction")
+        AddTransactionRequestDto dto = new AddTransactionRequestDto("8630018154",500);
+        mockMvc.perform(MockMvcRequestBuilders.post("/transaction/"+user1.getMobile())
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("Authorization",jwtAccessTokenUser1)
@@ -215,6 +217,20 @@ public class TransactionControllerIT {
                 .andExpect(jsonPath("$.status",is("NOT_FOUND")))
                 .andExpect(jsonPath("$.errorMsg", is("wallet not found with userId: 8630018154")))
                 .andReturn();
+    }
+
+    @Test
+    @Order(1)
+    public void transaction_failure_authorizationFailed() throws Exception {
+        // trying to create transaction with user2 wallet using user1 authentication token
+        assertNotNull(jwtAccessTokenUser1);
+        AddTransactionRequestDto dto = new AddTransactionRequestDto(user1.getMobile(),400);
+        mockMvc.perform( MockMvcRequestBuilders.post("/transaction/"+user2.getMobile())
+                        .content(this.objectMapper.writeValueAsString(dto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization",jwtAccessTokenUser1))
+                .andExpect(status().isForbidden());
     }
 
     // -------------------get transactions summary------------------//
@@ -253,6 +269,18 @@ public class TransactionControllerIT {
                 .andDo(print())
                 .andExpect(status().isForbidden());
     }
+
+    @Test
+    @Order(2)
+    public void getTransaction_failure_authorizationFailed() throws Exception {
+        // trying to get transactions from user2 wallet using user1 authentication token
+        assertNotNull(jwtAccessTokenUser1);
+        mockMvc.perform( MockMvcRequestBuilders.get("/transaction/"+user2.getMobile())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isForbidden());
+    }
+
 
     //--------------------get Transaction ---------------------------//
 

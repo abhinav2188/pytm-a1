@@ -10,7 +10,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class AddTransactionRequestDto {
-    private String payerMobile;
     private String payeeMobile;
     private double amount;
 }

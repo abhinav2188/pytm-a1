@@ -45,7 +45,7 @@ public class UserAuthorizationFilter extends OncePerRequestFilter {
         String requestURI = request.getRequestURI();
         logger.debug("request URI: "+requestURI);
 
-        if(requestURI.equals("/user/all")) {
+        if(requestURI.equals("/user/all") ) {
             logger.debug("non filter uri");
             return true;
         }
@@ -92,6 +92,14 @@ public class UserAuthorizationFilter extends OncePerRequestFilter {
             }
             if(requestURI.startsWith("/add-balance")){
                 String userMobile = request.getParameter("mobile");
+                logger.debug("userMobile: "+userMobile);
+                if(!userRepository.existsByUserNameAndMobile(userDetails.getUsername(), userMobile)){
+                    throw new UserAuthorizationException(userMobile);
+                }
+            }
+
+            if(requestURI.startsWith("/transaction/")){
+                String userMobile = requestURI.substring(13);
                 logger.debug("userMobile: "+userMobile);
                 if(!userRepository.existsByUserNameAndMobile(userDetails.getUsername(), userMobile)){
                     throw new UserAuthorizationException(userMobile);
